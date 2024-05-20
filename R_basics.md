@@ -1,7 +1,5 @@
-In the "cookbook" of R code we were talking about, I would provide different parts for each step past the initial query to choose data from the database -- joining the files, running analysis, giving resulting statistics and plots that can be downloaded (according to the rules of the database) and used however they want. These steps would be clearly laid out with a clear set of instructions for what parts of the code to modify to adapt it to their own questions and analysis. Everything else would be point and click-type selection of options.
-
 # Introduction
-Basic greetings, simple R commands, what should be done before the beginning of this part, and where we are going.
+This is a basic introduction to R and RStudio, including basic syntax, using the terminal, writing scripts, 
 ## About R and RStudio
 R is a language, RStudio is an IDE that collects all the pieces in one place to make it easier to use. [Intro to all the parts]
 
@@ -336,25 +334,10 @@ boxplot(value ~ category, data=box_df, col=c('red', 'blue', 'orange'))
 - The computer will always execute your commands **exactly**, even if there is a mistake in your code. 
 - 
 
-## Setting up for this material
+## Reading Errors in R
 
-## The road ahead
-We are going to go through the process of choosing a research question, selecting data, importing data into RStudio, processing, analyzing, and plotting data. The goal is to provide you with a full process that you can easily tweak to suit your needs. Obviously, we can't build out examples of every possible situation, so if you get stuck, be sure to ask for help. Nothing is more frustrating than spending hours trying to fix your code only to find that you deleted a ')' somewhere by accident.
+# RStudio
+## The interface
 
-# Selecting and importing data on the workbench
-## Your research question
-## Cohort builder
-## Concept selection
-## Dataset builder
-# Working with the data
-## Trimming data
-## Joining different kinds of data
-## Restructuring your table
-# Analysis
-## Pearson's correlation
-## ANOVA/t-statistics
-## Linear regression
-# Plotting
-## box plots
-## Modified scatter plots
-## histograms
+## Installing and using packages
+
