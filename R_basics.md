@@ -1,7 +1,8 @@
 # Introduction
-This is a basic introduction to R and RStudio, including basic syntax, using the terminal, writing scripts, 
-## About R and RStudio
-R is a language, RStudio is an IDE that collects all the pieces in one place to make it easier to use. [Intro to all the parts]
+This is a basic introduction to R, including basic syntax, using the terminal, writing scripts, and a few other useful pointers.
+
+## About R 
+[R](https://www.r-project.org/) is a programming language, [RStudio](https://posit.co/products/open-source/rstudio/) is an "Integrated Development Environment" (IDE) that collects all the pieces of R in one place to make it easier to use. Take a look at my [introduction to the basics of RStudio](https://github.com/ESodja/AOU_R/blob/main/RStudio.md).
 
 R includes different commands and object types to make working with data easier than, say, C++, FORTRAN, COBOL, or (arguably) Python because it was specifically developed to work with data and do statistics quickly and efficiently. 
 
@@ -11,7 +12,7 @@ R is a bit trickier to work with than Excel, but also has advantages of customiz
 
 > Never run statistics in Excel.
 
-R has functions, objects, strings, numbers, booleans, etc. Most of what we will use here are dataframes, which are essentially like an Excel spreadsheet with rows and columns. 
+R has functions, objects, strings, numbers, booleans, etc. Most of what we will use here are dataframes, which are essentially like an Excel spreadsheet with rows and columns full of numbers, strings, etc. 
 
 You can save information to objects to the RAM (short-term memory that is erased when you close R) by assigning it to a name. In R, to save a *string* (a character object, like a word or series of letters) to an object, you could use
 ```R
@@ -21,20 +22,22 @@ or
 ```R
 my_object = 'This is my object'
 ```
-Generally, in R it is preferred to use the arrow assignment (the first example) but in almost all circumstances the '=' will work the same way, so if you're used to using '=' to assign objects from previous Python experience, you can just use that.
+Generally, in R it is preferred to use the arrow assignment (the first example) but in almost all circumstances the `=` will work the same way, so if you're used to using `=` to assign objects from previous Python experience, you can just use that.
 If you enter this name into the terminal and hit enter or return, you will get your information back:
 ```R
 > my_object <- 'This is my object'
 > my_object
 [1] "This is my object"
 ```
-The "greater-than" symbol at the beginning of the line (>) indicates that this line is entered into a terminal as a single line of code -- you don't need to type the '>' part! You can save several things as a single vector object (vector comes from matrix math, where it is a one-dimensional matrix):
+The "greater-than" symbol at the beginning of the line (`>`) indicates that this line is entered into a terminal as a single line of code -- you don't need to type the `>` part! This is the basic way of using R or any other language: you enter one command, and R does that command. This is useful for testing ideas or getting information about things R has already stored that you want to use later.
+
+You can save several things as a single vector object (vector comes from matrix math, where it is a one-dimensional matrix):
 ```R
 > my_objects <- c('This is number one', 'This is number 2')
 > my_objects  
 [1] "This is number one" "This is number 2"
 ```
-The vector is defined using the function `c()` (the reasons for calling it that are arcane and unimportant at this level). Anything between the brackets of `c()` will be added to the vector. This includes other vectors!
+The vector is defined using the function `c()` (the reasons for calling it that are arcane and unimportant at this level). Anything between the parentheses of `c()` will be the contents of the vector, and multiple entries can be added by separating them with a comma. This includes other vectors!
 ```R
 > my_object
 [1] "This is my object"
@@ -64,7 +67,7 @@ Dataframes work the same way, but have two dimensions:
 4 4  four  
 5 5  five
 ```
-In this code, we define vectors `vector_a` and `vector_b` and then assign them as columns of the dataframe that we name `a` and `b`. The output of `my_frame` is three columns: the first is an index column (i.e. the row number), the second is column `a` as defined in the data.frame() function, and the third is column `b`. To get only one column of the dataframe, we can use indexing again:
+In this code, we define vectors `vector_a` and `vector_b` and then assign them as columns of the dataframe that we name `a` and `b`. The output of `my_frame` is three columns: the first is an index column (i.e. the row number), the second is column `a` as defined in the `data.frame()` function, and the third is column `b`. To get only one column of the dataframe, we can use indexing again:
 ```R
 > my_frame[1]  
   a  
@@ -88,7 +91,7 @@ Or we can use the column names -- there are two ways to do this:
 > my_frame$b
 [1] "one"   "two"   "three" "four"  "five"
 ```
-This gives you a vector of the column, while the other way gives you a new dataframe with only the selected column(s):
+This gives you a vector of the column, while the other way gives you a new dataframe with only the selected column(s) (notice that these remain as columns with five rows, where the `$` example above gives you horizontal elements -- that indicates the difference in how the data are stored):
 ```R
 > my_frame['a']
   a
@@ -118,7 +121,7 @@ You can also get specific rows of a dataframe:
 3 3 three
 4 4  four
 ```
-The number before the comma in the bracket denotes the **row**, while the number after is the **column**. If either is blank, it gives you all of the rows or columns available. The ':' indicates a sequence or series of values -- in this case, `2:4` is equivalent to `c(2,3,4)`. If you want data from a specific range of rows and columns, you can define both:
+The number before the comma in the bracket denotes the **row**, while the number after is the **column**. If either is blank, it gives you all of the rows or columns available. The `:` indicates a sequence or series of values -- in this case, `2:4` is equivalent to `c(2,3,4)`. If you want data from a specific range of rows and columns, you can define both:
 ```R
 > my_frame[2:4,'b']
 [1] "two"   "three" "four"  
@@ -146,7 +149,7 @@ You can also do this with character vectors, though it is trickier (the words on
 3 3 three  
 4 4  four
 ```
-Note that the order of the elements in the search vector doesn't affect the output row order.
+Note that the order of the elements in the search vector doesn't affect the output row order when you use `%in%`.
 
 To save the subset as a new dataframe, simply assign it a new name:
 ```R
@@ -176,6 +179,7 @@ You can also calculate based on existing columns:
 3 3 three 1.2 3.6  
 4 4  four 1.3 5.2
 ```
+The `*` operater is multiplication, while `/` is division, `+` is plus and `-` is minus (intuitively). `^` indicates exponents, as in `2^4` is two to the power of 4.
 
 To join to dataframes together, you use the `merge()` function:
 ```R
@@ -203,7 +207,7 @@ To join to dataframes together, you use the `merge()` function:
 4  4       7       c  
 5  5       9       c
 ```
-If not all the id values match, only the ones that do will be returned by default:
+The `by=` argument defines which columns to use to match the information in one dataframe to the information in the other. The column names are generated automatically in the output table as `value.x` and `value.y`, where x is from frame1 and y is from frame2. If not all the id values match, only the ones that do will be returned by default:
 ```R
 > frame1 <- data.frame(id = 1:5, value = c(1,3,5,7,9))
 > frame1  
@@ -228,11 +232,11 @@ If not all the id values match, only the ones that do will be returned by defaul
 
 Scripts are pre-written bits of code (often very long bits!) that are run all at once in sequence. This is helpful when creating analyses that will be repeated several times or if you want to keep a record of exactly how the analysis was done.
 
-To make a script, on the workbench in RStudio you can...
+To make a script, on the workbench in RStudio you can click on the plus sign in the top right corner and select "R script". This will generate a blank text document that you can write code in.
 
-RStudio allows you to run individual lines of a script on their own, which can be very helpful for troubleshooting. 
+RStudio allows you to run individual lines of a script on their own, which can be very helpful for troubleshooting. Any lines selected when you click 'Run' will be run, or you can select a block of code and press `ctrl+enter` or `ctrl+return`. If you don't have text selected, RStudio will run whatever line of code your cursor is currently on.
 
-To run an entire script, you can click the button in RStudio or enter `source('my_script.R')` in the terminal. 
+To run an entire script, you can click the "source" button in RStudio or enter `source('my_script.R')` in the terminal. 
 
 Comments can be added to scripts to clarify what is going on or what you are trying to do (I will use these extensively in my code so you can understand what is going on and to 'translate' the R code as we go). Comments are ignored by R -- if a line starts with a `#` symbol, R will ignore that entire line. I will also add commented lines that show expected outputs for my examples. For example:
 ```R
@@ -293,7 +297,7 @@ plot(y ~ x, data=plot_df, type='b')
 lines(z ~ x, data=plot_df, type='b')
 # Note the use of lines instead of plot -- using plot() creates a new plot, where lines() or points() (if you don't want lines) just adds to what is there
 # If the vertical axis of the first relationship is not in the range of the second one, the second one won't be visible. Fix this with ylim:
-plot(y ~ x, data=plot_df, type='b', ylim=c(0, 6)) # 6 is roughly the highest value in columns y and z
+plot(y ~ x, data=plot_df, type='b', ylim=c(0, 6)) # 6 is roughly the highest value in columns y and z, and we want to plot down to 0 in order to show the data in context
 lines(z ~ x, data=plot_df, type='b')
 # To tell the lines apart better, we can change their colors
 plot(y ~ x, data=plot_df, type='b', ylim=c(0, 6), col='blue') 
@@ -329,9 +333,9 @@ boxplot(value ~ category, data=box_df, col=c('red', 'blue', 'orange'))
 
 
 ## Things to keep in mind
-- If you need help with using a function, type `?help` in the terminal (or in RStudio, you can search for help in the tab)
-- There are so many places online to get help, so if you're stuck don't be afraid to google your issue. Someone has likely already asked the question and found an answer.
-- The computer will always execute your commands **exactly**, even if there is a mistake in your code. 
+- If you need help with using a function, type `?help` in the terminal (or in RStudio, you can search for help in the 'help' tab)
+- There are many places online to get help, so if you're stuck don't be afraid to google your issue. Someone has likely already asked the question and found an answer.
+- The computer will always execute your commands **exactly**, even if there is a mistake in your code. Often this is a misplaced `)`, a single mis-typed letter, etc. RStudio has a feature that puts red 'X's in the margin to the left of your script as you're working on it, but it might not tell you what is actually wrong, just where in the code it has figured out that something is wrong.
 - 
 
 ## Reading Errors in R
