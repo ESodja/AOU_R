@@ -11,7 +11,7 @@
 The cookbook will consist of code, descriptions, implementation directions, etc. for a few basic data analysis pipelines. Absolutely new users will be able to run certain analyses without any coding necessary, while those with some experience (or a desire to learn) will be able to adapt the provided code to fit their goals. 
  
 ## Basic R you might want to know
-[The basics of R and RStudio](https://github.com/ESodja/AOU_R/blob/main/R_basics.md)
+The basics of [R](https://github.com/ESodja/AOU_R/blob/main/R_basics.md) and [RStudio](https://github.com/ESodja/AOU_R/blob/main/RStudio.md)
 
 
 ![flowchart of files for different types of analyses](flowchart_052824.png)
