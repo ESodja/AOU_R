@@ -9,4 +9,4 @@ measdata <- data.frame(mapply(function(x,y) x=measmat[[y]], x=colnms, y=1:length
 meastypes <- unique(measdata['standard_concept_name'])
 
 ## What are the unique values?
-# measanswers <- unique(measdata['value_as_number'])
+measanswers <- unique(measdata['value_as_number'])
