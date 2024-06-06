@@ -31,10 +31,13 @@ github_username:  ESodja
 # remote_theme: samarsault/texture
 
 # Build settings
-theme: minima
+# theme: minima
 # remote_theme: aterenin/minima-reboot
+remote_theme: pages-themes/modernist@v0.2.0
+
 plugins:
 #  - jekyll-feed
+- jekyll-remote-theme # add this line to the plugins list if you already have one
 
 # Exclude from processing.
 # The following items will not be processed, by default.
