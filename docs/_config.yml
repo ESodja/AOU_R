@@ -31,7 +31,7 @@ github_username:  ESodja
 # remote_theme: samarsault/texture
 
 # Build settings
-theme: minima
+# theme: minima
 # remote_theme: aterenin/minima-reboot
 # remote_theme: pages-themes/time-machine@v0.2.0
 
