@@ -1,3 +1,9 @@
+---
+layout: page
+title: Noncoding Example
+permalink: /Examples/BMI_noncoding
+---
+
 Example: Lung conditions and BMI
 As an example, we can compare measurement data (BMI) and condition data (presence of few different lung conditions). 
 
@@ -13,7 +19,7 @@ As an example, we can compare measurement data (BMI) and condition data (presenc
 
 This analysis generates a box plot and ANOVA analysis:
 
-![boxplot of conditions relative to BMI](plot_cnd_meas.png)
+![boxplot of conditions relative to BMI](/images/plot_cnd_meas.png)
 
 
 

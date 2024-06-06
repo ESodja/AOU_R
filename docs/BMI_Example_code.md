@@ -1,3 +1,9 @@
+---
+layout: page
+title: Coding Example
+permalink: /Examples/BMI_coding
+---
+
 Example: Lung conditions and BMI
 As an example, we can compare measurement data (BMI) and condition data (presence of few different lung conditions). 
 
@@ -8,7 +14,7 @@ As an example, we can compare measurement data (BMI) and condition data (presenc
 
 3. Copy-paste the SQL import text from the dataset builder to `Data_import.r`.
 
-If you're only lightly modifying the code (i.e. [changing the plot details](https://github.com/ESodja/AOU_R/blob/main/Plot_modification.md), [selecting a subset of variables](https://github.com/ESodja/AOU_R/blob/main/Variable_modification.md), anything that doesn't change the type of data you want to compare), you can still use the main workflow:
+If you're only lightly modifying the code (i.e. [changing the plot details](/Mods/Plots), [selecting a subset of variables](/Mods/Variables), anything that doesn't change the type of data you want to compare), you can still use the main workflow:
 
 4. In the RStudio console, type `source('master.R')` and hit `enter` or `return`.
 5. Answer the prompts [still under development].
@@ -16,7 +22,7 @@ If you're only lightly modifying the code (i.e. [changing the plot details](http
 
 This analysis generates a box plot and ANOVA analysis:
 
-![boxplot of conditions relative to BMI](plot_cnd_meas.png) [update with tweaked outputs]
+![boxplot of conditions relative to BMI](/images/plot_cnd_meas.png) [update with tweaked outputs]
 
 
 |           | Df     | Sum Sq           | Mean Sq          | F value          | Pr(>F) | 

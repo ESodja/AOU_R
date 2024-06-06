@@ -1,8 +1,13 @@
-# Introduction
+---
+layout: page
+title: RStudio Basics
+permalink: /Basics/RStudio
+---
+
 This is an introduction to basic use of RStudio.
 
 ## R vs. RStudio -- what is the difference?
-[R](https://www.r-project.org/) is a programming language, [RStudio](https://posit.co/products/open-source/rstudio/) is an "Integrated Development Environment" (IDE) that collects all the pieces of R in one place to make it easier to use. Take a look at my [introduction to the basics of R](https://github.com/ESodja/AOU_R/blob/main/R_basics.md).
+[R](https://www.r-project.org/) is a programming language, [RStudio](https://posit.co/products/open-source/rstudio/) is an "Integrated Development Environment" (IDE) that collects all the pieces of R in one place to make it easier to use. Take a look at my [introduction to the basics of R](/Basics/R).
 
 In short, RStudio is just one of many ways to use R. 
 It is popular because it combines may of the things that R can do in easy to understand graphical interfaces. 
