@@ -32,7 +32,11 @@ Download the zip file of R scripts to run this system, or [view them online](htt
 ![flowchart of files for different types of analyses](./images/flowchart_052824.png)
 1. Generate your dataset on the researcher workbench
 2. Initialize your RStudio cloud environment
+<<<<<<< HEAD
 3. Download and upload the [zip file](/R_files.zip) to the cloud environment (it will unzip automatically)
+=======
+3. Download and upload the [zip file](TBD) to the cloud environment (it will unzip automatically)
+>>>>>>> origin/main
 4. Copy the SQL code into 'Data_import.R'
 5. Type `source('master.R')` into the RStudio console and press `Enter` or `Return`, and answer the questions that come up in the console
 6. Look at the outputs and download your plots and statistical reports.
@@ -44,7 +48,11 @@ Download the zip file of R scripts to run this system, or [view them online](htt
 ### Coding (or “coding curious”) users:
 1. Generate your dataset on the researcher workbench
 2. Initialize your RStudio cloud environment
+<<<<<<< HEAD
 3. Download and upload the [zip file](/R_files.zip) to the cloud environment (it will unzip automatically)
+=======
+3. Download and upload the [zip file](TBD) to the cloud environment (it will unzip automatically)
+>>>>>>> origin/main
 4. Copy the SQL code into 'Data_import.R'
 5. Determine the analysis you would like to run and which files need to be run to accomplish that
 6. Identify and modify code to adjust the existing system to do what you want it to
