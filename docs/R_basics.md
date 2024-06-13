@@ -1,14 +1,14 @@
 ---
 layout: default
 title: R Basics
-permalink: /Basics/R
+permalink: /basics/r
 ---
 
 # Introduction
 This is a basic introduction to R, including basic syntax, using the terminal, writing scripts, and a few other useful pointers.
 
 ## About R 
-[R](https://www.r-project.org/) is a programming language, [RStudio](https://posit.co/products/open-source/rstudio/) is an "Integrated Development Environment" (IDE) that collects all the pieces of R in one place to make it easier to use. Take a look at my [introduction to the basics of RStudio](/Basics/RStudio).
+[R](https://www.r-project.org/) is a programming language, [RStudio](https://posit.co/products/open-source/rstudio/) is an "Integrated Development Environment" (IDE) that collects all the pieces of R in one place to make it easier to use. Take a look at my [introduction to the basics of RStudio](/basics/rstudio).
 
 R includes different commands and object types to make working with data easier than, say, C++, FORTRAN, COBOL, or (arguably) Python because it was specifically developed to work with data and do statistics quickly and efficiently. 
 

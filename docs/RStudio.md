@@ -1,13 +1,13 @@
 ---
 layout: default
 title: RStudio Basics
-permalink: /Basics/RStudio
+permalink: /basics/rstudio
 ---
 
 This is an introduction to basic use of RStudio.
 
 ## R vs. RStudio -- what is the difference?
-[R](https://www.r-project.org/) is a programming language, [RStudio](https://posit.co/products/open-source/rstudio/) is an "Integrated Development Environment" (IDE) that collects all the pieces of R in one place to make it easier to use. Take a look at my [introduction to the basics of R](/Basics/R).
+[R](https://www.r-project.org/) is a programming language, [RStudio](https://posit.co/products/open-source/rstudio/) is an "Integrated Development Environment" (IDE) that collects all the pieces of R in one place to make it easier to use. Take a look at my [introduction to the basics of R](/basics/r).
 
 In short, RStudio is just one of many ways to use R. 
 It is popular because it combines may of the things that R can do in easy to understand graphical interfaces. 
@@ -75,7 +75,7 @@ If there is a function with that name, the help pages for that function will dis
 Viewer and presentation tabs are beyond the scope of this guide.
 
 ### Scripting pane
-Once you start to write scripts (see the [R introduction page](https://github.com/ESodja/AOU_R/blob/main/R_basics.md)) the script panel will be useful.
+Once you start to write scripts (see the [R introduction page](/basics/r)) the script panel will be useful.
 Click on the green '+' in the top left corner of the window and select `R Script`.
 A new panel will open in the top left for your R scripts.
 You can write code in this panel and save it as a .R file to use later. 
