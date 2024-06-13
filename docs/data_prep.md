@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: default
 title: Preparing data for analysis
-permalink: /Dataprep 
+permalink: /dataprep 
 ---
 
 Pulling data into R is easy with the dataset builder interface.

@@ -1,3 +1,9 @@
+---
+layout: default
+title: Joins
+permalink: /joins
+---
+
 # Joining data
 Joins between datatypes are usually required to attach different types of data for the same individuals in a cohort together.
 Each data type is likely to have different individuals in them, so the choice has to be made whether to include all of one or the other dataset, and leave the "extra" blank spots or not.

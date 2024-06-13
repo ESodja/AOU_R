@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Coding Example
 permalink: /Examples/BMI_coding
 ---

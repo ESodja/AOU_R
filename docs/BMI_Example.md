@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Noncoding Example
 permalink: /Examples/BMI_noncoding
 ---

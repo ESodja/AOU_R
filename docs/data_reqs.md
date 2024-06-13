@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: default
 title: Limitations and requirements for input data
-Permalink: /Datareqs
+Permalink: /datareqs
 ---
 
 To make a system like this work, there must be a few restrictions on which data can be used and how the connections can be made.
