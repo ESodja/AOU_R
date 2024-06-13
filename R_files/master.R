@@ -21,28 +21,110 @@ if (str_to_upper(data_correct) == 'Y'){
     if (cond_in) source('dataprep_condition.R'); print('Sample of included conditions:'); print(head(condnames))
     if (meas_in) source('dataprep_measurement.R'); print('Sample of included measurements:'); print(head(meastypes))
     if (surv_in) source('dataprep_survey.R'); print('Sample of included survey questions:'); print(head(survqs))
-} else print('Please check the database input that you put in Data_import.R')
+} else print('Please check the database input that you put in Data_import.R'); break
 
 # Look for possible data connections
 combotable <- unique(expand.grid(condition = c(FALSE, cond_in), survey=c(FALSE, surv_in), measurement=c(FALSE, meas_in))) 
-combotable = combotable[which(rowSums(combotable) > 0),]
+combotable = combotable[which(rowSums(combotable) > 0 & rowSums(combotable) < 3),]
+rownames(combotable) = NULL
 combotable$compare = lapply(lapply(apply(combotable, 1, function(x)which(x==TRUE)), names), paste, collapse='-')
 print('The potential data comparisons I can see are these:')
 print(cbind(1:nrow(combotable), combotable[,ncol(combotable)]))
-which_analysis = readline(prompt=paste('Which of these would you like to run?', paste(1:nrow(combotable), collapse=', ')))
+which_analysis = readline(prompt=paste('Which of these would you like to run? (', paste(1:nrow(combotable), collapse=', '),') '))
 # if there is a single TRUE in a row, that could be within that data type
 # if there is two TRUE's in a row, those data types could be compared
 # if there are more than two, the dataset brought in is probably too complicated for an automated system
-if (rowSums(combotable[which_analysis, 1:length(data_pres[data_pes==TRUE])]) == 1){
+# get the row of selected data types
+tf_types = unlist(combotable[which_analysis, 1:length(data_pres[data_pres==TRUE])])
+# names of columns where the selected datatype is TRUE
+tf_names = tf_types[tf_types==TRUE]
+cnd_type = 'none'
+srv_type = 'none'
+mmt_type = 'none'
+
+if ('condition' %in% tf_names) {
+  source('dataprep_condition.R')
+  if (length(condnames[,1]) > 2){
+    print('More than conditions detected; analysis will be run as presence/absence of all conditions')
+    cnd_type = 'mult_pa'
+  } else if (length(condnames[,1] == 2 & length(tf_names)==1 & 'condition' %in% names(tf_names))){
+    print('2 conditions detected; analysis will be run as presence-absence of both conditions')
+    cnd_type = 'mult_pa2'
+  } else if (length(condnames[,1] == 1 & length(tf_names)==1 & 'condition' %in% names(tf_names))){
+    print('1 condition detected; analysis will compare presence/absence of condition against another data type')
+    cnd_type = 'sing_pa'
+  }
+}
+if ('survey' %in% tf_names) {
+  source('dataprep_survey.R')
+  # test for survey answer type (single answer or multiple response)
+  if (length(survqs[,1]) > 2){
+    print('More than 2 survey questions detected; analysis will require custom configuration')
+#    break
+  } else if (length(survqs[,1]) == 2 & length(tf_names) == 1 & 'survey' %in% names(tf_names)) {
+    print('Detected 2 survey questions; responses will be analyzed against each other')
+    srv_type = '2q'
+  } else if (length(survqs[,1]) == 1 & length(tf_names) == 2) {
+    print('Detected 1 survey question; survey responses will be compared against other data types.')
+    srv_type = '1q'
+  }
+}
+if ('measurement' %in% tf_names) {
+  source('dataprep_measurement.R')
+  if (length(meastypes[,1]) >= 2 & length(tf_names) == 1 & 'measurement' %in% names(tf_names)){
+    print('Detected 2 or more measurements to compare against each other')
+    mmt_type = '2meas'
+  } else if ( length(meastypes[,1]) == 1 & length(tf_names) == 2) {
+    print('Detected 1 measurement to compare to another data type')
+    mmt_type = '1meas'
+#   } else if(length(meastypes[,1] >2)){
+#     print('Detected too many measurements; this analysis requres custom configuration')
+#    break
+  }
+}
+if (length(tf_names) == 1){
+    
     # check that there are 2+ elements in that dataset to compare
     # run a file that compares the data type to itself
-} else if (rowSums(combotable[which_analysis, 1:length(data_pres[data_pes==TRUE])]) == 2){
+} else if (length(tf_names) == 2){
+    
     # make sure there is only one element in each data type to compare
     # run the file that joins and compares these data
-} else if (rowSums(combotable[which_analysis, 1:length(data_pres[data_pes==TRUE])]) > 2){
-    print('This analysis may be too complex for an automated analysis system; try subsetting data in the dataset builder according to the group(s) you would like to compare. See data_reqs.md page on the github site for more information.')
+} else if (length(tf_names) > 2){
 }
     
+if (mmt_type == '2meas' & srv_type == 'none' & cnd_type == 'none'){
+    print('Comparing two measurements for each individual')
+    source('meas_meas_corr.R')
+} else if (mmt_type == 'none' & srv_type == '2q' & cnd_type == 'none'){
+    print('Comparing two survey answers for each individual')
+    source('surv_surv_stats.R')
+} else if (mmt_type == 'none' & srv_type == 'none' & cnd_type == 'mult_pa2'){
+    print('Comparing two conditions for each individual')
+    source('cond_cond_chisq.R')
+} else if (mmt_type == '1meas' & srv_type == '1q' & cnd_type == 'none'){
+    # one measured value against one survey question
+    source('join_surv_meas.R')
+} else if (mmt_type == '1meas' & srv_type == 'none' & cnd_type == 'mult_pa'){
+    # one measured value against p/a of several conditions
+    source('join_cond_meas.R')
+} else if (mmt_type == '1meas' & srv_type == 'none' & cnd_type == 'sing_pa'){
+    # one measured value against p/a of one condition
+    source('join_cond_meas.R')
+} else if (mmt_type == 'none' & srv_type == '1q' & cnd_type == 'mult_pa'){
+    # one survey question against p/a of several conditions
+    source('join_surv_cond.R')
+} else if (mmt_type == 'none' & srv_type == '1q' & cnd_type == 'sing_pa'){
+    # one survey question against p/a of one condition
+    source('join_surv_cond.R')
+} else if (mmt_type == '2meas' & srv_type == 'none' & cnd_type == 'sing_pa'){
+    # two measured values against p/a of one condition
+    source('join_cond_meas.R')
+} else if (mmt_type == '2meas' & srv_type == 'none' & cnd_type == 'mult_pa2'){
+    # two measured values against p/a of two conditions
+    source('join_cond_meas.R')
+    
+} else print('This analysis may be too complex for an automated analysis system; try subsetting data in the dataset builder according to the group(s) you would like to compare. See data_reqs.md page on the github site for more information.')
 
 
 ## Level 2: Data joins
@@ -57,8 +139,8 @@ if (rowSums(combotable[which_analysis, 1:length(data_pres[data_pes==TRUE])]) == 
 
 
 ## Example: looking for BMI relative to lung conditions
-source('dataprep_condition.R')
-source('dataprep_measurement.R')
-source('join_cond_meas.R')
-source('plot_cond_meas.R')
-source('cond_meas_anova.R')
+# source('dataprep_condition.R')
+# source('dataprep_measurement.R')
+# source('join_cond_meas.R')
+# source('plot_cond_meas.R')
+# source('cond_meas_anova.R')
