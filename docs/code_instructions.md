@@ -40,13 +40,18 @@ In RStudio, in the 'files' tab on the bottom right pane, click 'Upload', select 
 [screenshots need pointers and stuff]
 
 ![In RStudio Files tab, select 'Upload'...](/images/RStudio_zipupload.png)
+*In RStudio Files tab, select 'Upload'...*
 
 ![...Browse to the zip file you downloaded...](/images/RStudio_zipupload2.png)
+*...Browse to the zip file you downloaded...*
     
 ![...Select the zip file and click OK...](/images/RStudio_zipupload3.png)
+*...Select the zip file and click OK...*
     
-![...The zip file automatically is unzipped.](/images/RStudio_zipupload4.png)
+![...The zip file is automatically unzipped.](/images/RStudio_zipupload4.png)
+*...The zip file is automatically unzipped.*
 
+[decide which approach is best and choose one?]
 Alternatively, in RStudio, click File > New Project... > Version Control > Git (if a popup asks if you want to save your .RData file, say No). 
 Enter the repository URL: 
 ```https://github.com/ESodja/AOU_R.git```
@@ -113,7 +118,20 @@ These changes only require re-running the ploting file and not the entire analys
     
 ## Notes:
 
+Overviews of each step of this process and how to change them are available in the following pages:
+
+> [Data preparation](/dataprep)
+
+> [Modifying variables](/mods/variables)
+
+> [Joins](/joins)
+
+> [Modifying plot outputs](/mods/plots)
+
+> [Analyses](/mods/analysis)
+
 If data joins need to be modified, the R files used in the next row up on the flowchart (named like `dataprep_[something].R`) should also be modified so that the join includes the right data in the correct format. Instructions will be included in the join files for common ways to do this. 
+A brief overview of joins is [here](/joins)
 
 After modifying the files (except plotting files, though it wouldn't hurt for these as well), you will probably want to restart R (click on session > Restart R) and run each file individually from the beginning to make sure the results are correct.
 

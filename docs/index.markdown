@@ -22,7 +22,7 @@ Data selection for this project is handled entirely by the dataset builder. Help
 
 What kinds of research questions fit with these analyses? [Check out the limits on what this system can do.](/datareqs)
 
-Check out the basics of [R](/basics/r) and [RStudio](/basics/rstudio) to get oriented with the language and the platform we'll use on the workbench.
+Check out the basics of [R](./basics/r) and [RStudio](./basics/rstudio) to get oriented with the language and the platform we'll use on the workbench.
 
 Download the [zip file of R scripts](/R_files.zip) to run this system, or [view them online](https://github.com/ESodja/AOU_R.git).
 

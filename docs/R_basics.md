@@ -4,7 +4,7 @@ title: R Basics
 permalink: /basics/r
 ---
 
-# Introduction
+# Introduction to R
 This is a basic introduction to R, including basic syntax, using the terminal, writing scripts, and a few other useful pointers.
 
 ## About R 
@@ -20,6 +20,9 @@ R is a bit trickier to work with than Excel, but also has advantages of customiz
 
 R has functions, objects, strings, numbers, booleans, etc. Most of what we will use here are dataframes, which are essentially like an Excel spreadsheet with rows and columns full of numbers, strings, etc. 
 
+## Basic R useage
+
+### Entering information into R
 You can save information to objects to the RAM (short-term memory that is erased when you close R) by assigning it to a name. In R, to save a *string* (a character object, like a word or series of letters) to an object, you could use
 ```R
 my_object <- 'This is my object'
@@ -59,8 +62,8 @@ You can select individual entries of a vector with indexing (Note for those with
 > my_objects[2]
 [1] "This is number two"
 ```
-
-Dataframes work the same way, but have two dimensions:
+### Data frames
+Dataframes work the same way as vectors, but have two dimensions:
 ```R
 > vector_a <- c(1,2,3,4,5)
 > vector_b <- c('one', 'two', 'three', 'four', 'five')
@@ -187,6 +190,7 @@ You can also calculate based on existing columns:
 ```
 The `*` operater is multiplication, while `/` is division, `+` is plus and `-` is minus (intuitively). `^` indicates exponents, as in `2^4` is two to the power of 4.
 
+### Joining data frames
 To join to dataframes together, you use the `merge()` function:
 ```R
 > frame1 <- data.frame(id = 1:5, value = c(1,3,5,7,9))
@@ -236,15 +240,23 @@ The `by=` argument defines which columns to use to match the information in one 
 2  5       9       a
 ```
 
+### Scripting
 Scripts are pre-written bits of code (often very long bits!) that are run all at once in sequence. This is helpful when creating analyses that will be repeated several times or if you want to keep a record of exactly how the analysis was done.
 
-To make a script, on the workbench in RStudio you can click on the plus sign in the top right corner and select "R script". This will generate a blank text document that you can write code in.
+To make a script, on the workbench in RStudio you can click on the plus sign in the top right corner and select "R script". 
+This will generate a blank text document that you can write code in. 
+Outside of RStudio, any unformatted text file can be used as an R script (the extension doesn't matter, but generally it's easy to use .R). 
 
 RStudio allows you to run individual lines of a script on their own, which can be very helpful for troubleshooting. Any lines selected when you click 'Run' will be run, or you can select a block of code and press `ctrl+enter` or `ctrl+return`. If you don't have text selected, RStudio will run whatever line of code your cursor is currently on.
 
-To run an entire script, you can click the "source" button in RStudio or enter `source('my_script.R')` in the terminal. 
+To run an entire script, you can click the "Source" button in RStudio or enter `source('my_script.R')` in the terminal. 
 
-Comments can be added to scripts to clarify what is going on or what you are trying to do (I will use these extensively in my code so you can understand what is going on and to 'translate' the R code as we go). Comments are ignored by R -- if a line starts with a `#` symbol, R will ignore that entire line. I will also add commented lines that show expected outputs for my examples. For example:
+Note that script code doesn't have the '>' at the beginning of each line; that is because it usually isn't entered directly into the terminal, but is run as an entire file. 
+
+### Comments
+Comments can be added to scripts to clarify what is going on or what you are trying to do (I will use these extensively in my code so you can understand what is going on and to 'translate' the R code as we go). 
+Comments are ignored by R -- if a line starts with a `#` symbol, R will ignore that entire line. 
+I will also add commented lines that show expected outputs for my examples, or provide alternative functions to change how the data is handled. For example:
 ```R
 # Create a new dataframe with three columns, with the third as the total of the first two
 # create a dataframe with columns 'a' and 'b'
@@ -260,6 +272,7 @@ my_df
 # 5 2 9
 # add a column called 'c' that is the sum of 'a' and 'b', by line
 my_df$c <- my_df$a + my_df$b
+# my_df$c <- my_df$a * my_df$b ## uncomment this line to perform multiplication instead!
 # check to make sure it looks right
 my_df
 # Output:
@@ -270,10 +283,38 @@ my_df
 # 4 5 1  6  
 # 5 2 9 11
 ```
-Note that script code doesn't have the '>' at the beginning of each line; that is because it usually isn't entered directly into the terminal, but is run as an entire file. 
+
+```R
+# Create a new dataframe with three columns, with the third as the total of the first two
+# create a dataframe with columns 'a' and 'b'
+my_df <- data.frame(a=c(1,4,3,5,2), b=c(6,3,1,1,9))
+# check to make sure it looks right
+my_df
+# Output:
+#   a b  
+# 1 1 6  
+# 2 4 3  
+# 3 3 1  
+# 4 5 1  
+# 5 2 9
+# add a column called 'c' that is the sum of 'a' and 'b', by line
+my_df$c <- my_df$a + my_df$b
+my_df$c <- my_df$a * my_df$b ## uncomment this line to perform multiplication instead!
+# check to make sure it looks right
+my_df
+# Output:
+#   a b  c  
+# 1 1 6  7  
+# 2 4 3  7  
+# 3 3 1  4  
+# 4 5 1  6  
+# 5 2 9 11
+```
+*Note: the original addition line will still execute, but the results will be overwritten by the multiplication line below it. You can add a `#` to the beginning of the addition line to keep it from executing.*
 
 When you are writing (or tweaking) your own code, it is a good idea to write detailed comments throughout so that 'future you' can understand what 'past you' was thinking.
 
+### Plotting
 Plotting can be one of the hardest parts of data analysis, at least if you want plots that are readable. R has a lot of useful built-in plotting tools, and many more can be found in extension packages. At the most basic level you can generate a scatterplot with x and y values:
 ```R
 # make a dataframe with x values (0 to 10) and y values (11 random values on a uniform distribution, by default between 0 and 1)
@@ -337,17 +378,21 @@ boxplot(value ~ category, data=box_df)
 boxplot(value ~ category, data=box_df, col=c('red', 'blue', 'orange'))
 ```
 
+## Reading Errors in R
+R errors can be tricky to read and are not always helpful.
+As R reads your code, it is looking for specific events that force it to stop.
+Sometimes the event is due to an error in your code that is easy to point to directly, e.g. a missing parenthesis. 
+In that case, somewhere in the error message there will be a line number that corresponds to which line in your script has the error.
+In other cases, the event that makes R stop originates several lines above the place in the script R is trying to execute.
+To track these errors down, it can be helpful to use `print()` statements to look at your variables (or look in the Environment tab in RStudio) or else enter the names of the variables into the Console to check that they look like they should.
+You can also type `traceback()` in the console after an error message pops up to get a more detailed description of the issue, but this is often a lot of text to sift through that is only marginally helpful.
+
 
 ## Things to keep in mind
-- If you need help with using a function, type `?help` in the terminal (or in RStudio, you can search for help in the 'help' tab)
-- There are many places online to get help, so if you're stuck don't be afraid to google your issue. Someone has likely already asked the question and found an answer.
-- The computer will always execute your commands **exactly**, even if there is a mistake in your code. Often this is a misplaced `)`, a single mis-typed letter, etc. RStudio has a feature that puts red 'X's in the margin to the left of your script as you're working on it, but it might not tell you what is actually wrong, just where in the code it has figured out that something is wrong.
+- If you need help with using a function, type `?help` in the terminal (or in RStudio, you can type`?help` in the console or just search for a given topic in the 'Help' tab)
+- There are many places online to get help, so if you're stuck don't be afraid to Google your issue. Someone has likely already asked the question and found an answer.
+- The computer will always execute your commands **exactly**, even if there is a mistake in your code. Often this is a misplaced `)`, a single mis-typed letter, etc.
 - 
 
-## Reading Errors in R
 
-# RStudio
-## The interface
-
-## Installing and using packages
 
