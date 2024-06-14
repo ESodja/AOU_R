@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Coding Example
-permalink: /Examples/BMI_coding
+permalink: /examples/bmi_coding
 ---
 
 Example: Lung conditions and BMI

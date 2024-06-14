@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Noncoding Example
-permalink: /Examples/BMI_noncoding
+permalink: /examples/bmi_noncoding
 ---
 
 Example: Lung conditions and BMI

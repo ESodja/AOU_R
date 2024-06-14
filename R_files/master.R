@@ -1,11 +1,14 @@
 ### Used to run scripts in specific orders; specific to RStudio ctrl+enter line by line running
 
+# If the repository was cloned, we need a different directory
+if('./R_files' %in% list.dirs(recursive=TRUE)) setwd('/home/rstudio/AOU_R/R_files')
 
 ## Universal for all workflows
 source('Data_import.R')
 ### This will take the id of the imported data and make the following steps use it for pulling data into the analysis
 # grabs the data id from your sql import, unique to each database builder output 
 data_id <- strsplit(ls(pattern='\\_df$')[[1]], '_')[[1]][2]
+
 
 # test for presence of each type of data
 cond_in = exists(paste0('dataset_',data_id,'_condition_df'))

@@ -20,11 +20,11 @@ The cookbook will consist of code, descriptions, implementation directions, etc.
 ## Things to know:
 Data selection for this project is handled entirely by the dataset builder. Help can be found [here](https://support.researchallofus.org/hc/en-us/articles/4556645124244-Using-the-Concept-Set-Selector-and-Dataset-Builder-tools-to-build-your-dataset).
 
-What kinds of research questions fit with these analyses: [a page with guidelines, data types, etc.]
+What kinds of research questions fit with these analyses? [Check out the limits on what this system can do.](/datareqs)
 
-Check out the basics of [R](/Basics/R) and [RStudio](/Basics/RStudio) to get oriented as far as modifying code.
+Check out the basics of [R](/basics/r) and [RStudio](/basics/rstudio) to get oriented with the language and the platform we'll use on the workbench.
 
-Download the zip file of R scripts to run this system, or [view them online](https://github.com/ESodja/AOU_R/tree/8d98f129c034823636ae1be58e973924152be4be/R_files). [github repo must be public]
+Download the [zip file of R scripts](/R_files.zip) to run this system, or [view them online](https://github.com/ESodja/AOU_R.git).
 
 
 ## How to run your analyses
@@ -32,27 +32,19 @@ Download the zip file of R scripts to run this system, or [view them online](htt
 ![flowchart of files for different types of analyses](./images/flowchart_052824.png)
 1. Generate your dataset on the researcher workbench
 2. Initialize your RStudio cloud environment
-<<<<<<< HEAD
 3. Download and upload the [zip file](/R_files.zip) to the cloud environment (it will unzip automatically)
-=======
-3. Download and upload the [zip file](TBD) to the cloud environment (it will unzip automatically)
->>>>>>> origin/main
 4. Copy the SQL code into 'Data_import.R'
 5. Type `source('master.R')` into the RStudio console and press `Enter` or `Return`, and answer the questions that come up in the console
 6. Look at the outputs and download your plots and statistical reports.
 
-[Detailed non-coding instructions with screenshots](./how-to/non-coding)
+[Detailed non-coding instructions with screenshots](/how-to/non-coding)
 
-[Example of non-coding workflow](./Examples/BMI_noncoding)
+[Example of non-coding workflow](/examples/bmi_noncoding)
 
 ### Coding (or “coding curious”) users:
 1. Generate your dataset on the researcher workbench
 2. Initialize your RStudio cloud environment
-<<<<<<< HEAD
 3. Download and upload the [zip file](/R_files.zip) to the cloud environment (it will unzip automatically)
-=======
-3. Download and upload the [zip file](TBD) to the cloud environment (it will unzip automatically)
->>>>>>> origin/main
 4. Copy the SQL code into 'Data_import.R'
 5. Determine the analysis you would like to run and which files need to be run to accomplish that
 6. Identify and modify code to adjust the existing system to do what you want it to
@@ -69,13 +61,13 @@ After modifying the files, it is a good idea to restart R (click on session > Re
 
 Download the necessary output files.
 
-[Detailed coding instructions with screenshots](./how-to/coding)
+[Detailed coding instructions with screenshots](/how-to/coding)
 
-[Example of coding workflow](/Examples/BMI_coding)
+[Example of coding workflow](/examples/bmi_coding)
 
 
 ## Other resources
-[using RStudio on the Researcher Workbench](https://support.researchallofus.org/hc/en-us/articles/22078658566804-Using-RStudio-on-the-Researcher-Workbench)
+[Using RStudio on the Researcher Workbench](https://support.researchallofus.org/hc/en-us/articles/22078658566804-Using-RStudio-on-the-Researcher-Workbench)
 
 
 
