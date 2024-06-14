@@ -34,13 +34,18 @@ In RStudio, in the 'files' tab on the bottom right pane, click 'Upload', select 
 [screenshots need pointers and stuff]
 
 ![In RStudio Files tab, select 'Upload'...](/images/RStudio_zipupload.png)
+*In RStudio Files tab, select 'Upload'...*
 
 ![...Browse to the zip file you downloaded...](/images/RStudio_zipupload2.png)
+*...Browse to the zip file you downloaded...*
     
 ![...Select the zip file and click OK...](/images/RStudio_zipupload3.png)
+*...Select the zip file and click OK...*
     
-![...The zip file automatically is unzipped.](/images/RStudio_zipupload4.png)
+![...The zip file is automatically unzipped.](/images/RStudio_zipupload4.png)
+*...The zip file is automatically unzipped.*
 
+[decide which approach is best and choose one?]
 Alternatively, in RStudio, click File > New Project... > Version Control > Git (if a popup asks if you want to save your .RData file, say No). 
 Enter the repository URL: 
 ```https://github.com/ESodja/AOU_R.git```
@@ -65,20 +70,28 @@ Your Files tab should already have the R scripts from the zip file or the copy o
 > Tip: If you change *anything* about the dataset definition in the dataset builder on the workbench, you will have to re-do this step!
 
 ![After dataset is built, click 'Analyze'](/images/SQL_analyze.png)
+*After dataset is built, click 'Analyze'*
 
 ![Click the button next to R and then Copy Code](/images/SQL_analyze2.png)
+*Click the button next to R and then Copy Code*
 
 ![Wait for confirmation of the copy and click Cancel](/images/SQL_analyze3.png)
+*Wait for confirmation of the copy and click Cancel*
 
 ![Click on the RStudio icon](/images/SQL_analyze4.png)
+*Click on the RStudio icon*
 
 ![Click Open RStudio](/images/SQL_analyze5.png)
+*Click 'Open RStudio'*
 
 ![Click Data_import.R](/images/SQL_analyze6.png)
+*Click Data_import.R*
 
 ![Paste the copied code into the script](/images/SQL_analyze7.png)
+*Paste the copied code into the script*
 
 ![Save and close the script](/images/SQL_analyze8.png)
+*Save and close the script*
 
 [screenshots need arrows and pointers]
 
@@ -87,7 +100,10 @@ Your Files tab should already have the R scripts from the zip file or the copy o
 Enter `source(‘master.R’)` in the RStudio console. After some time (some steps take a while, depending on how large your dataset is), the console will ask some questions about your data and the analysis you want to do, and then proceed based on your answers.
 
 ![Enter source('master.R') in the console](/images/program_run1.png)
+*Enter source('master.R') in the console*
+
 ![Answer questions to confirm detected data](/images/program_run2.png)
+*Answer questions to confirm detected data*
                           
 [screenshots need pointers and arrows]
                           
