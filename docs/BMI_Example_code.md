@@ -14,7 +14,7 @@ As an example, we can compare measurement data (BMI) and condition data (presenc
 
 3. Copy-paste the SQL import text from the dataset builder to `Data_import.r`.
 
-If you're only lightly modifying the code (i.e. [changing the plot details](/Mods/Plots), [selecting a subset of variables](/Mods/Variables), anything that doesn't change the type of data you want to compare), you can still use the main workflow:
+If you're only lightly modifying the code (i.e. [changing the plot details](./Mods/Plots), [selecting a subset of variables](./Mods/Variables), anything that doesn't change the type of data you want to compare), you can still use the main workflow:
 
 4. In the RStudio console, type `source('master.R')` and hit `enter` or `return`.
 5. Answer the prompts [still under development].

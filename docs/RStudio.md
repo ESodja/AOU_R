@@ -18,7 +18,7 @@ This is an introduction to basic use of RStudio.
 
 ## R vs. RStudio -- what is the difference?
 [icons for R and RStudio]
-[R](https://www.r-project.org/) is a programming language, [RStudio](https://posit.co/products/open-source/rstudio/) is an "Integrated Development Environment" (IDE) that collects all the pieces of R in one place to make it easier to use. Take a look at my [introduction to the basics of R](/basics/r).
+[R](https://www.r-project.org/) is a programming language, [RStudio](https://posit.co/products/open-source/rstudio/) is an "Integrated Development Environment" (IDE) that collects all the pieces of R in one place to make it easier to use. Take a look at my [introduction to the basics of R](./basics/r).
 
 > If you want a modern point-and-click interface with R, use RStudio. If you like the "programmer/hacker" vibe of typing all the commands in a minimalist terminal, feel free to use basic R.
 
@@ -110,7 +110,7 @@ Sometimes multiple packages have functions that are named the same thing, so be 
 Viewer and presentation tabs are beyond the scope of this guide.
 
 ### Scripting pane
-Once you start to write scripts (see the [R introduction page](/basics/r)) the script panel will be useful.
+Once you start to write scripts (see the [R introduction page](./basics/r)) the script panel will be useful.
 Click on the green '+' in the top left corner of the window and select `R Script`.
 ![RStudio opening screen](/images/RStudio_1b.png)
 A new panel will open in the top left for your R scripts.
