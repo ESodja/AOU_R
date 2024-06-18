@@ -11,13 +11,14 @@ permalink: /how-to/non-coding
 > 3. Download and upload the [zip file](./R_files.zip) to the cloud environment (it will unzip automatically)
 > 4. Copy the SQL code into 'Data_import.R'
 > 5. Type `source('master.R')` into the RStudio console and press `Enter` or `Return`, and answer the questions that come up in the console
-> 6. Look at the outputs and download your plots and statistical reports.
+> 6. Look at the outputs and download your plots and statistical reports
 
 ## Full Instructions
 To use the automated analysis I've built for this group, follow the instructions below:
 ### 1. **Generate the desired dataset from the dataset builder on the AoU workbench**
+This is a detailed process that deserves its own page, [like this one](./how-to/dataset).
 
-Help can be found [here](https://support.researchallofus.org/hc/en-us/articles/4556645124244-Using-the-Concept-Set-Selector-and-Dataset-Builder-tools-to-build-your-dataset).
+Additional help can be found [here](https://support.researchallofus.org/hc/en-us/articles/4556645124244-Using-the-Concept-Set-Selector-and-Dataset-Builder-tools-to-build-your-dataset).
 
 The data that can be automatically processed by this system needs to have a few specific elements and meet a few requirements to work. The guidelines can be found [here](./datareqs).
 

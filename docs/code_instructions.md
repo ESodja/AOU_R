@@ -19,8 +19,9 @@ permalink: /how-to/coding
 To modify and use the automated analysis I've built, follow the instructions below:
 
 ### 1. **Generate the desired dataset from the dataset builder on the AoU workbench**
+This is a detailed process that deserves its own page, [like this one](./how-to/dataset).
 
-Help can be found [here](https://support.researchallofus.org/hc/en-us/articles/4556645124244-Using-the-Concept-Set-Selector-and-Dataset-Builder-tools-to-build-your-dataset).
+Additional help can be found [here](https://support.researchallofus.org/hc/en-us/articles/4556645124244-Using-the-Concept-Set-Selector-and-Dataset-Builder-tools-to-build-your-dataset).
 
 This system requires that the data have a few specific elements and meet a few requirements to automatically process. The guidelines can be found [here](./datareqs). 
 
