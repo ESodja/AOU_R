@@ -11,4 +11,4 @@ This depends on your goals.
 For example, if you are comparing survey responses to whether someone has a given diagnosed condition, you may want to keep only individuals that have useful survey responses, but there will probably be indiviudals in your cohort that do not have a given condition (unless you chose your cohort specifically as individuals with that condition).
 In that case, you would need to answer the questions in the console interface as [fill in answers once that part is done].
 
-## 
+## Modifications
