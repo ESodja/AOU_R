@@ -15,6 +15,8 @@ permalink: /how-to/coding
 > 7. Type `source('filename.R')` into the RStudio console and press `Enter` or `Return` for each file in order, from top to bottom of the flowchart
 > 8. Look at the outputs and download your plots and statistical reports
 
+Here is an [example of a coding workflow](./examples/bmi_coding) that implements these steps.
+
 ## Full Instructions:
 To modify and use the automated analysis I've built, follow the instructions below:
 
@@ -103,11 +105,30 @@ Your Files tab should already have the R scripts from the zip file or the copy o
 
 [screenshots need arrows and pointers]
 
-### 5. **Determine what analyses need to be run for your specific research interests (i.e. identify endpoints on the table above for the kinds of plots and statistical analyses that would be useful)**
-    
-[example]
+### 5. **Determine what analyses need to be run for your specific research interests**
+Depending on what kind of data you are using, you will need to use different analyses.
+The basic analyses we will work with are outlined in the table below:
+
+|                         | Categorical Dependent | Continuous Dependent          |
+|:-----------------------:|:---------------------:|:-----------------------------:|
+| Categorical Independent | Chi Square            | ANOVA                         |
+| Continuous Independent  | Logistic regression   | Linear Regression/correlation |
+
+These analyses are listed at the bottom of the flowchart below.
 
 ### 6. **Work backwards on the flowchart to see which files need to be run to perform those analyses**
+Based on the type of data you are using for your research question, find the output you would like to generate on the flowchart below:
+![flowchart of files for different types of analyses](./assets/images/flowchart_052824.png)
+From there, trace the arrows back to the specific files that need to be run.
+Anything "upstream" from the desired goal on the bottom row needs to be run, starting from the top.
+For example, if I am trying to run an ANOVA analysis for measured values against survey responses, I would start from the box with `catsurv_meas_plot.R`, and trace it back to `join_catsurv_meas.R`, `dataprep_survey.R`, `dataprep_measurement.R`, and `Data_import.R`.
+[screenshot highlighting this example]
+These should be run in order starting from the top (the order of files on the same level don't matter, e.g. dataprep_survey.R and dataprep_measurement.R can be run in that order or reversed). 
+For more details on what each type of file does (i.e. a row of the flowchart), refer to these pages: 
+- [Data prep files](./dataprep)
+- [Join files](./joins)
+- [Plot files](./mods/plots) 
+- [Analysis files](./mods/analysis)
 
 `Data_import.R' is essential and should be run first to pull the data from the database.
 `dataprep_[something].R` files are helpful to clean and structure data for analysis.
@@ -115,28 +136,45 @@ If you are joining two types of data, e.g. condition and survey data, you should
 Generating plots of a given relationship is achieved by using the `plot_[something].R` files.
 Analyses are done in files with the name of the analysis in the file name, e.g. an ANOVA analysis between condition and measurement data is performed by `cond_meas_anova.R`. 
 
-### 7. **Run the file from the console by entering `source(‘filename.R’)` for each necessary file, starting from the top (the first one should be Data_import.R)**
+### 7. **If you need to modify files for different analyses, do it now**
+Guidelines for modifying joins, plots and analyses are available:
+- [Join modifications](./joins#modifications)
+- [Plot modifications](./mods/plots#modifications) 
+- [Analysis modifications](./mods/analysis#modifications)
 
-You can also open each file and run each line individually by placing the cursor on the first line and pressing ctrl+enter (or cmd+return) repeatedly, once for each line of the file. 
-This is especially helpful if you've modified the code somewhere and need to track down an error.
+If you need to modify any plots, it might be helpful to comment out the lines with the `png()` function and the `dev.off()` function (these are the lines that open and close, respectively, the .png writer).
+This will make RStudio produce plots in the Plot tab each time the plotting script is run, so you can tinker with the settings and view the results more quickly.
+Once you're satisfied with the plot, uncomment the `png()` and `dev.off()` lines to generate a downloadable output plot.
 
-### 8. **After all the files have run, view the generated outputs under the “files” tab in RStudio**
+After modifying the files (except plotting files, though it wouldn't hurt for these as well), you will probably want to restart R (click on session > Restart R) and run each file individually from the beginning to make sure the results are correct.
 
+If data joins need to be modified, the R files used in the next row up on the flowchart (named like `dataprep_[something].R`) should also be modified so that the join includes the right data in the correct format. Instructions will be included in the join files for common ways to do this. 
+
+### 8. **Run each file in order in the console**
+Enter `source(‘filename.R’)` for each necessary file, starting from the top (the first one should be `Data_import.R`).
+If you try to run `source('master.R')` after modifying any of the R scripts, there is a good chance it won't work correctly or will encounter an error along the way.
+
+You can also open each file and run each line individually by placing the cursor on the first line of the script and pressing `ctrl+enter` (or `cmd+return`) repeatedly, once for each line of the file. 
+This is especially helpful if you've modified the code somewhere and need to track down an error, since the error will appear in the console after you run the line that produces the error.
+
+### 9. **View and download the generated outputs**
+All generated outputs are available under the “files” tab in RStudio.
+By default, the plotting scripts generate downloadable .png files of any plots they generate.
+You can find these output files under the Files tab, usually in the home directory. 
+Check the boxes next to the files you want to download and click More > Export.
+
+Text of statistical analyses are saved as .csv files, which can be downloaded in the same way as the plots.
 If the output plots need modification, you can open the plotting files (`plot_[something].R`; bottom row of the flowchart) and follow commented instructions and alternative code to modify the output. 
 These changes only require re-running the ploting file and not the entire analysis. 
     
 ## Notes:
 
-Overviews of each step of this process and how to change them are available in the following pages:
+Overviews of each step of this process and how to modify them are available in the following pages:
 > [Data preparation](./dataprep)
 > [Modifying variables](./mods/variables)
 > [Joins](./joins)
 > [Modifying plot outputs](./mods/plots)
 > [Analyses](./mods/analysis)
 
-If data joins need to be modified, the R files used in the next row up on the flowchart (named like `dataprep_[something].R`) should also be modified so that the join includes the right data in the correct format. Instructions will be included in the join files for common ways to do this. 
-A brief overview of joins is [here](./joins)
 
-After modifying the files (except plotting files, though it wouldn't hurt for these as well), you will probably want to restart R (click on session > Restart R) and run each file individually from the beginning to make sure the results are correct.
 
-Here is an [example of a coding workflow](./examples/bmi_coding).
