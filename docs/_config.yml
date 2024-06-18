@@ -23,7 +23,7 @@ email: eric.sodja@utah.edu
 description: >- # this means to ignore newlines until "baseurl:"
 #    This page was designed for use with the AOU summer institute 2024
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://esodja.github.io/aou24" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://esodja.github.io/AOU_R" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 github_username:  ESodja
 # remote_theme: samarsault/texture
