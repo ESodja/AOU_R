@@ -31,7 +31,7 @@ We will use a pre-made workspace for the examples in the instutute. Instructions
 
 ## How to run your analyses
 ### Non-coding users: 
-![flowchart of files for different types of analyses](AOU_R/docs/assets/images/flowchart_052824.png)
+![flowchart of files for different types of analyses](/AOU_R/docs/assets/images/flowchart_052824.png)
 1. [Generate your dataset](./how-to/dataset) on the researcher workbench
 2. Initialize your RStudio cloud environment
 3. Download and upload the [zip file](./R_files.zip) to the cloud environment (it will unzip automatically)
