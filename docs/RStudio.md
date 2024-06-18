@@ -25,19 +25,19 @@ This is an introduction to basic use of RStudio.
 RStudio is one of many ways to use R, but it is a common starting place for most R users. 
 It is popular because it combines may of the things that R can do in easy to understand graphical interfaces. 
 For example, if you want to create a plot of some data in R without using RStudio, you would use the `plot` function, enter the name of your data into the command, and a new window opens with the plot. 
-![plotting data in base R](/images/exdata1.png)
+![plotting data in base R](./assets/images/exdata1.png)
 *exdata1 and exdata2 are example data frames that I can plot using the `plot()` function.*
     
 If you run `plot` again, R will overwrite your plot with the new one unless you change a few different options or use specific functions to make this not happen.
-![plotting data in base R](/images/exdata2.png)
+![plotting data in base R](./assets/images/exdata2.png)
 *If I want to go back to the first plot after plotting the second data frame, I will have to re-run that plotting function* 
 
 In RStudio, plots are displayed in a "plot" tab that keeps old plots when it generates a new one. 
-![plotting data in RStudio](/images/exdata3.png)
+![plotting data in RStudio](./assets/images/exdata3.png)
 *You can run two plotting functions in a row and still see both plots in RStudio...*
     
 This allows you to look back at previous plots by clicking the forward and backward arrows.
-![plotting data in RStudio](/images/exdata4.png)
+![plotting data in RStudio](./assets/images/exdata4.png)
 *Click the 'back' arrow to view the previous plot.*
 
 ## Downloading RStudio (optional)
@@ -46,7 +46,7 @@ After you install R (download it [here](https://cran.rstudio.com/)) RStudio can 
 
 ## The parts of RStudio
 By default, RStudio shows three panels when you first open it: 
-![RStudio opening screen](/images/RStudio_1.png)
+![RStudio opening screen](./assets/images/RStudio_1.png)
 The left side of the window is the "Console/Terminal/Background Jobs" panel, the top right is the "Environment/History/Connections/Tutorial" panel, and the bottom right has the "Files/Plots/Packages/Help/Viewer/Presentation" panel.
 Each of these panels and their respective tabs are briefly described below.
 
@@ -64,16 +64,16 @@ Most users won't need to use this.
 ### The environment
 The environment panel keeps track of the previously named objects in your R session.
 For example, if you want to save a string of text for later, you might enter `my_string <- 'this is my string'` into the console.
-![Entering commands in the console](/images/RStudio_3.png)
+![Entering commands in the console](./assets/images/RStudio_3.png)
 When you do, the environment tab will update showing the object by name and the contents (or for large objects, a sample of the contents) to remind you of what is in the object.
 This is especially helpful when you have a lot of objects you are working with.
 
 The history tab gives a history of commands entered in the console, including anything run from the script pane (see below).
 This may be helpful instead of scrolling up in the console because some operations have long outputs.
 The history pane does not show those outputs, only the commands that were entered, making it easier to look back at your previous work.
-![History pane](/images/RStudio_4.png)
+![History pane](./assets/images/RStudio_4.png)
 
-![Press ctrl+Enter/cmd+Return when the script pane is active and the line where the cursor was will run](/images/RStudio_5.png)
+![Press ctrl+Enter/cmd+Return when the script pane is active and the line where the cursor was will run](./assets/images/RStudio_5.png)
 *Press ctrl+Enter/cmd+Return when the script pane is active and the line where the cursor was will run.*
     
 The connections tab allows you to connect to outside databases; for our purposes this is not necessary.
@@ -112,9 +112,9 @@ Viewer and presentation tabs are beyond the scope of this guide.
 ### Scripting pane
 Once you start to write scripts (see the [R introduction page](./basics/r)) the script panel will be useful.
 Click on the green '+' in the top left corner of the window and select `R Script`.
-![RStudio opening screen](/images/RStudio_1b.png)
+![RStudio opening screen](./assets/images/RStudio_1b.png)
 A new panel will open in the top left for your R scripts.
-![Scripting pane](/images/RStudio_2.png)
+![Scripting pane](./assets/images/RStudio_2.png)
 You can write code in this panel and save it as a .R file to use later. 
 You can also run code from this panel by placing the cursor on a line of code and pressing `ctrl+enter` on Windows or `cmd+return` on a Mac to run that line of code and move the cursor to the next line.
 This can be very useful for testing out individual pieces of code as you write.

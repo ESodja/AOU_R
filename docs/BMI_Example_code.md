@@ -22,7 +22,7 @@ If you're only lightly modifying the code (i.e. [changing the plot details](./Mo
 
 This analysis generates a box plot and ANOVA analysis:
 
-![boxplot of conditions relative to BMI](/images/plot_cnd_meas.png) [update with tweaked outputs]
+![boxplot of conditions relative to BMI](./assets/images/plot_cnd_meas.png) [update with tweaked outputs]
 
 
 |           | Df     | Sum Sq           | Mean Sq          | F value          | Pr(>F) | 

@@ -19,7 +19,7 @@ As an example, we can compare measurement data (BMI) and condition data (presenc
 
 This analysis generates a box plot and ANOVA analysis:
 
-![boxplot of conditions relative to BMI](/assets/images/plot_cnd_meas.png)
+![boxplot of conditions relative to BMI](./assets/images/plot_cnd_meas.png)
 
 
 
