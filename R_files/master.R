@@ -17,20 +17,36 @@ meas_in = exists(paste0('dataset_',data_id,'_measurement_df'))
 data_pres = c(condition = cond_in, survey = surv_in, measurement = meas_in)
 print(paste('Detected data types', paste(names(data_pres[data_pres==TRUE]), collapse=', ')))
 # user input to whether the detected data are the same as what they intended
+data_correct = 'Y' # default answer
 data_correct = readline(prompt='Is this correct? [Y/n] ')
 # if data is correct, detect the variables in the dataframes
 if (str_to_upper(data_correct) == 'Y'){
     ## Level 1: specific to which data was pulled from AOU database
-    if (cond_in) source('dataprep_condition.R'); print('Sample of included conditions:'); print(head(condnames))
-    if (meas_in) source('dataprep_measurement.R'); print('Sample of included measurements:'); print(head(meastypes))
-    if (surv_in) source('dataprep_survey.R'); print('Sample of included survey questions:'); print(head(survqs))
-} else print('Please check the database input that you put in Data_import.R'); break
+    if (cond_in == TRUE){ 
+      source('dataprep_condition.R')
+      print('Sample of included conditions:')
+      print(head(condnames))
+    }
+    if (meas_in == TRUE){
+      source('dataprep_measurement.R')
+      print('Sample of included measurements:')
+      print(head(meastypes))
+    }
+    if (surv_in == TRUE){
+      source('dataprep_survey.R')
+      print('Sample of included survey questions:')
+      print(head(survqs))
+    }
+} else {
+  stop('Please check the database input that you put in Data_import.R')
+}
 
 # Look for possible data connections
 combotable <- unique(expand.grid(condition = c(FALSE, cond_in), survey=c(FALSE, surv_in), measurement=c(FALSE, meas_in))) 
 combotable = combotable[which(rowSums(combotable) > 0 & rowSums(combotable) < 3),]
 rownames(combotable) = NULL
 combotable$compare = lapply(lapply(apply(combotable, 1, function(x)which(x==TRUE)), names), paste, collapse='-')
+if(combotable$compare == '') combotable$compare = colnames(combotable[which(combotable==TRUE)])
 print('The potential data comparisons I can see are these:')
 print(cbind(1:nrow(combotable), combotable[,ncol(combotable)]))
 which_analysis = readline(prompt=paste('Which of these would you like to run? (', paste(1:nrow(combotable), collapse=', '),') '))
@@ -38,9 +54,9 @@ which_analysis = readline(prompt=paste('Which of these would you like to run? ('
 # if there is two TRUE's in a row, those data types could be compared
 # if there are more than two, the dataset brought in is probably too complicated for an automated system
 # get the row of selected data types
-tf_types = unlist(combotable[which_analysis, 1:length(data_pres[data_pres==TRUE])])
+tf_types = unlist(combotable[which_analysis,][which(data_pres==TRUE)])
 # names of columns where the selected datatype is TRUE
-tf_names = tf_types[tf_types==TRUE]
+tf_names = names(tf_types[tf_types==TRUE])
 cnd_type = 'none'
 srv_type = 'none'
 mmt_type = 'none'
@@ -48,11 +64,11 @@ mmt_type = 'none'
 if ('condition' %in% tf_names) {
   source('dataprep_condition.R')
   if (length(condnames[,1]) > 2){
-    print('More than conditions detected; analysis will be run as presence/absence of all conditions')
+    print('More than 2 conditions detected; analysis will be run as presence/absence of all conditions')
     cnd_type = 'mult_pa'
   } else if (length(condnames[,1] == 2 & length(tf_names)==1 & 'condition' %in% names(tf_names))){
     print('2 conditions detected; analysis will be run as presence-absence of both conditions')
-    cnd_type = 'mult_pa2'
+    cnd_type = 'mult_pa'
   } else if (length(condnames[,1] == 1 & length(tf_names)==1 & 'condition' %in% names(tf_names))){
     print('1 condition detected; analysis will compare presence/absence of condition against another data type')
     cnd_type = 'sing_pa'
@@ -62,8 +78,7 @@ if ('survey' %in% tf_names) {
   source('dataprep_survey.R')
   # test for survey answer type (single answer or multiple response)
   if (length(survqs[,1]) > 2){
-    print('More than 2 survey questions detected; analysis will require custom configuration')
-#    break
+    stop('More than 2 survey questions detected; analysis will require custom configuration')
   } else if (length(survqs[,1]) == 2 & length(tf_names) == 1 & 'survey' %in% names(tf_names)) {
     print('Detected 2 survey questions; responses will be analyzed against each other')
     srv_type = '2q'
@@ -102,29 +117,45 @@ if (mmt_type == '2meas' & srv_type == 'none' & cnd_type == 'none'){
 } else if (mmt_type == 'none' & srv_type == '2q' & cnd_type == 'none'){
     print('Comparing two survey answers for each individual')
     source('surv_surv_stats.R')
-} else if (mmt_type == 'none' & srv_type == 'none' & cnd_type == 'mult_pa2'){
+} else if (mmt_type == 'none' & srv_type == 'none' & cnd_type == 'mult_pa'){
     print('Comparing two conditions for each individual')
-    source('cond_cond_chisq.R')
+    source('stat_cond_cond.R')
+    source('plot_cond_cond.R')
 } else if (mmt_type == '1meas' & srv_type == '1q' & cnd_type == 'none'){
     # one measured value against one survey question
+    print('Comparing a measurement against a survey question')
     source('join_surv_meas.R')
+    source('plot_surv_meas.R')
+    source('stat_surv_meas.R')
 } else if (mmt_type == '1meas' & srv_type == 'none' & cnd_type == 'mult_pa'){
     # one measured value against p/a of several conditions
+    print('Comparing a measurement against presence/absence of several conditions')
     source('join_cond_meas.R')
+    source('plot_cond_meas.R')
+    source('stats_cond_meas.R')
 } else if (mmt_type == '1meas' & srv_type == 'none' & cnd_type == 'sing_pa'){
     # one measured value against p/a of one condition
+    print('Comparing a measurement against presence/absence of a single condition')
     source('join_cond_meas.R')
 } else if (mmt_type == 'none' & srv_type == '1q' & cnd_type == 'mult_pa'){
     # one survey question against p/a of several conditions
+    print('Comparing a survey response against presence/absence of several conditions')
     source('join_surv_cond.R')
+    source('plot_surv_cond.R')
+    source('stats_surv_cond.R')
 } else if (mmt_type == 'none' & srv_type == '1q' & cnd_type == 'sing_pa'){
     # one survey question against p/a of one condition
+    print('Comparing a survey response against presence/absence of a single condition')
     source('join_surv_cond.R')
+    source('plot_surv_cond.R')
+    source('stats_surv_cond.R')
 } else if (mmt_type == '2meas' & srv_type == 'none' & cnd_type == 'sing_pa'){
     # two measured values against p/a of one condition
+    print('Comparing two measured values against presence/absence of a single condition')
     source('join_cond_meas.R')
 } else if (mmt_type == '2meas' & srv_type == 'none' & cnd_type == 'mult_pa2'){
     # two measured values against p/a of two conditions
+    print('Comparing two measured values against presence/absence of two conditions')
     source('join_cond_meas.R')
     
 } else print('This analysis may be too complex for an automated analysis system; try subsetting data in the dataset builder according to the group(s) you would like to compare. See data_reqs.md page on the github site for more information.')

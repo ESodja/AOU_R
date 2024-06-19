@@ -9,4 +9,19 @@ conddata <- data.frame(mapply(function(x,y) x=condmat[[y]], x=colnms, y=1:length
 ## List of unique condition concepts we are working with
 condnames <- unique(conddata['standard_concept_name'])
 
-
+if (!exists('multicond')){
+    multicond = readline(prompt='Are you comparing 2 conditions? ( Y / n )')
+    if (multicond == 'Y'){
+        words <- strsplit(condnames[,1], "[ ,.\\(\\)\"]")
+        words <- regmatches(unlist(words), gregexpr("\\b[A-Z]\\w+", unlist(words)))
+        choicewords <- sort(table(unlist(words), exclude=""), decreasing=TRUE)
+        print(choicewords)
+        chosen = readline(prompt=paste('Which of the above are the name of your conditions you would like to test? Enter two numbers, separated by a comma (', paste(1:length(choicewords), collapse=','), ')'))
+        chosen.words = choicewords[eval(parse(text=paste0('c(', chosen, ')')))]
+        conddata$cond1=0
+        conddata$cond1[unlist(lapply(strsplit(conddata$standard_concept_name, "[ ,.\\(\\)\"]"), function(x) any(regmatches(unlist(x), gregexpr("\\b[A-Z]\\w+", unlist(x))) %in% names(chosen.words[1]))))==TRUE] <- 1
+        conddata$cond2=0
+        conddata$cond2[unlist(lapply(strsplit(conddata$standard_concept_name, "[ ,.\\(\\)\"]"), function(x) any(regmatches(unlist(x), gregexpr("\\b[A-Z]\\w+", unlist(x))) %in% names(chosen.words[2]))))==TRUE] <- 1
+        names(conddata) = c('person_id', 'standard_concept_name', names(chosen.words[1]), names(chosen.words[2]))
+    }
+}
