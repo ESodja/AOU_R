@@ -8,7 +8,7 @@ permalink: /how-to/coding
 ## Quick Reference:
 > 1. Generate your dataset on the researcher workbench
 > 2. Initialize your RStudio cloud environment
-> 3. Download and upload the [zip file](./R_files.zip) to the cloud environment (it will unzip automatically)
+> 3. Import the cookbook from GitHub
 > 4. Copy the SQL code into 'Data_import.R'
 > 5. Determine the analysis you would like to run and which files need to be run to accomplish that
 > 6. Identify and modify code to adjust the existing system to do what you want it to
@@ -88,7 +88,7 @@ Your Files tab should already have the R scripts from the zip file or the copy o
 
 [screenshots need arrows and pointers]
 
-### 5. **Determine what analyses need to be run for your specific research interests**
+### 5. **Determine analyses to run**
 Depending on what kind of data you are using, you will need to use different analyses.
 The basic analyses we will work with are outlined in the table below:
 
@@ -99,8 +99,6 @@ The basic analyses we will work with are outlined in the table below:
 
 These analyses are listed at the bottom of the flowchart below.
 
-### 6. **Work backwards on the flowchart to see which files need to be run to perform those analyses**
-Based on the type of data you are using for your research question, find the output you would like to generate on the flowchart below:
 ![flowchart of files for different types of analyses](./assets/images/flowchart_052824.png)
 From there, trace the arrows back to the specific files that need to be run.
 Anything "upstream" from the desired goal on the bottom row needs to be run, starting from the top.
@@ -119,7 +117,6 @@ If you are joining two types of data, e.g. condition and survey data, you should
 Generating plots of a given relationship is achieved by using the `plot_[something].R` files.
 Analyses are done in files with the name of the analysis in the file name, e.g. an ANOVA analysis between condition and measurement data is performed by `cond_meas_anova.R`. 
 
-### 7. **If you need to modify files for different analyses, do it now**
 Guidelines for modifying joins, plots and analyses are available:
 - [Join modifications](./joins#modifications)
 - [Plot modifications](./mods/plots#modifications) 
@@ -133,14 +130,14 @@ After modifying the files (except plotting files, though it wouldn't hurt for th
 
 If data joins need to be modified, the R files used in the next row up on the flowchart (named like `dataprep_[something].R`) should also be modified so that the join includes the right data in the correct format. Instructions will be included in the join files for common ways to do this. 
 
-### 8. **Run each file in order in the console**
+### 6. **Run each file in order in the console**
 Enter `source(‘filename.R’)` for each necessary file, starting from the top (the first one should be `Data_import.R`).
 If you try to run `source('master.R')` after modifying any of the R scripts, there is a good chance it won't work correctly or will encounter an error along the way.
 
 You can also open each file and run each line individually by placing the cursor on the first line of the script and pressing `ctrl+enter` (or `cmd+return`) repeatedly, once for each line of the file. 
 This is especially helpful if you've modified the code somewhere and need to track down an error, since the error will appear in the console after you run the line that produces the error.
 
-### 9. **View and download the generated outputs**
+### 7. **View and download the generated outputs**
 All generated outputs are available under the “files” tab in RStudio.
 By default, the plotting scripts generate downloadable .png files of any plots they generate.
 You can find these output files under the Files tab, usually in the home directory. 
@@ -151,13 +148,12 @@ If the output plots need modification, you can open the plotting files (`plot_[s
 These changes only require re-running the ploting file and not the entire analysis. 
     
 ## Notes:
-
-Overviews of each step of this process and how to modify them are available in the following pages:
-> [Data preparation](./dataprep)
-> [Modifying variables](./mods/variables)
-> [Joins](./joins)
-> [Modifying plot outputs](./mods/plots)
-> [Analyses](./mods/analysis)
+Overviews of each step of the analysis process and how to modify them are available in the following pages:
+> [Data preparation](/dataprep)
+> [Modifying variables](/mods/variables)
+> [Joins](/joins)
+> [Modifying plot outputs](/mods/plots)
+> [Analyses](/mods/analysis)
 
 
 

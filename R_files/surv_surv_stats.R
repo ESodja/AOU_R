@@ -9,7 +9,7 @@ survdata_wide = reshape(survdata, idvar='person_id', timevar='question', directi
 require(stringr)
 numeric_answers = matrix(unlist(lapply(2:ncol(survdata_wide), function(y) lapply(str_extract_all(survdata_wide[,y], pattern ='\\(?[0-9,.]+\\)?'), function(x) as.numeric(x[1])))), ncol=3)
 
-if (all(!is.na(colSums(numeric_answers, na.rm=TRUE)))){
+if (all(!is.na(colSums(numeric_answers)))){
   
   which.compare = data.frame(expand.grid(survqs[,1], survqs[,1]))
   # which.compare = data.frame(expand.grid(c(1:ncol(numeric_answers)), c(1:ncol(numeric_answers))))
@@ -21,9 +21,10 @@ if (all(!is.na(colSums(numeric_answers, na.rm=TRUE)))){
   names(cor.table) = apply(which.compare, 1, paste, collapse=' vs. ')
   
   write.csv(cor.table, 'survey_question_correlation.csv')
-} else if (any(is.na(colSums(numeric_answers, na.rm=TRUE)))){
+} else if (any(is.na(colSums(numeric_answers)))){
   # Somebody is categorical
-  survdata_factor = lapply(2:ncol(survdata_wide)[which(is.na(colSums(numeric_answers, na.rm=TRUE)))], function(x) as.factor(survdata_wide[,x]))
+  survdata_factor = data.frame(lapply(2:ncol(survdata_wide[which(is.na(colSums(numeric_answers)))]), function(x) as.factor(survdata_wide[,x])))
+  names(survdata_factor) <- names(survdata_wide[,c(2:ncol(survdata_wide))])
   # survdata_factor = lapply(2:ncol(survdata_wide), function(x) as.factor(survdata_wide[,x]))
   
   ordinal = readline('Some of these data are categorical. Are any of them also ordinal? (y/n)')
@@ -50,7 +51,9 @@ if (all(!is.na(colSums(numeric_answers, na.rm=TRUE)))){
   # which.compare = data.frame(expand.grid(c(1:ncol(numeric_answers)), c(1:ncol(numeric_answers))))
   which.compare = which.compare[!duplicated(t(apply(which.compare, 1, sort))),]
   which.compare = which.compare[which.compare$Var1 != which.compare$Var2,]
-  fact.table <- data.frame(mapply(function(x,y) chisq.test(survdata_factor[[x]], survdata_factor[[y]]), x=which.compare$Var1, y= which.compare$Var2))
+  fact.table <- data.frame(mapply(function(x,y) chisq.test(table(survdata_factor[,c(x,y)])), x=which.compare$Var1, y= which.compare$Var2))
   names(fact.table) = apply(which.compare, 1, paste, collapse=' vs. ')
-  write.csv(fact.table, 'survey_question_chisq.csv')
+  output <- capture.output(print(c(fact.table)))
+  writeLines(output, con=file('surv_surv_stats.csv'))
+#   write.csv(fact.table, 'survey_question_chisq.csv')
 }

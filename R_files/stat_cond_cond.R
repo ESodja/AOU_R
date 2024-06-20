@@ -17,8 +17,10 @@ if(multicond != 'Y'){
     names(cor.table) = apply(which.compare, 1, paste, collapse=' vs. ')
 } else {
     
-    cstest <- chisq.test(unique(conddat.unity)[,c(2,3)])
-    output <- capture.output(print(cstest))
+    cstable <- table(unique(conddat.unity)[,c(2,3)])
+    cstable[1,1] <- 252209 - sum(cstable)
+    cstest <- chisq.test(cstable)
+    output <- capture.output(print(c(cstest)))
     writeLines(output, con=file('cond_cond_stats.csv'))
 }
     

@@ -12,10 +12,13 @@ colnms <- colnames(survmat)
 survdata <- data.frame(mapply(function(x,y) x=survmat[[y]], x=colnms, y=1:length(colnms)))
 # Filters out non-answers (skip, don't know, or prefer not to answer)
 survdata <- survdata[survdata$answer %in% c('PMI: Skip','PMI: Dont Know', 'PMI: Prefer Not To Answer') == FALSE,]
+if('survey' %in% names(survdata)){
+    survdata <- survdata[,names(survdata)[names(survdata) != 'survey']]
+}
 
 ## Check for unique questions we are working with
 survqs <- data.frame(q=unique(survdata['question']), N=0)
-survans <- data.frame(q=unique(survdata['question','answer']), N=0)
+survans <- data.frame(q=unique(survdata[c('question','answer')]), N=0)
 
 ## Need to check the survey question type -- some are multiple responses, which makes things trickier
 # this will total the number of responses from each person, and check to see if there is variation in the number of responses

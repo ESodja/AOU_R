@@ -79,7 +79,7 @@ if ('survey' %in% tf_names) {
   # test for survey answer type (single answer or multiple response)
   if (length(survqs[,1]) > 2){
     stop('More than 2 survey questions detected; analysis will require custom configuration')
-  } else if (length(survqs[,1]) == 2 & length(tf_names) == 1 & 'survey' %in% names(tf_names)) {
+  } else if (length(survqs[,1]) == 2 & length(tf_names) == 1 & 'survey' %in% tf_names) {
     print('Detected 2 survey questions; responses will be analyzed against each other')
     srv_type = '2q'
   } else if (length(survqs[,1]) == 1 & length(tf_names) == 2) {
@@ -116,7 +116,8 @@ if (mmt_type == '2meas' & srv_type == 'none' & cnd_type == 'none'){
     source('meas_meas_corr.R')
 } else if (mmt_type == 'none' & srv_type == '2q' & cnd_type == 'none'){
     print('Comparing two survey answers for each individual')
-    source('surv_surv_stats.R')
+    source('stat_surv_surv.R')
+    source('plot_surv_surv.R')
 } else if (mmt_type == 'none' & srv_type == 'none' & cnd_type == 'mult_pa'){
     print('Comparing two conditions for each individual')
     source('stat_cond_cond.R')
