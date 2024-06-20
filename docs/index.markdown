@@ -8,8 +8,6 @@ title: Welcome!
     
 # R recipes for the AOU summer institute 2024
 
-[test link](/)
-[test link2](./)
 
 ## Goals: 
  - Have resources available for new users to perform simple analyses on AoU workbench data
