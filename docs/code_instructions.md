@@ -21,7 +21,7 @@ Here is an [example of a coding workflow](./examples/bmi_coding) that implements
 To modify and use the automated analysis I've built, follow the instructions below:
 
 ### 1. **Generate the desired dataset from the dataset builder on the AoU workbench**
-This is a detailed process that deserves its own page, [like this one](./how-to/dataset).
+This is a detailed process that deserves its own page, [like this one](/how-to/dataset).
 
 Additional help can be found [here](https://support.researchallofus.org/hc/en-us/articles/4556645124244-Using-the-Concept-Set-Selector-and-Dataset-Builder-tools-to-build-your-dataset).
 
@@ -106,10 +106,10 @@ For example, if I am trying to run an ANOVA analysis for measured values against
 [screenshot highlighting this example]
 These should be run in order starting from the top (the order of files on the same level don't matter, e.g. dataprep_survey.R and dataprep_measurement.R can be run in that order or reversed). 
 For more details on what each type of file does (i.e. a row of the flowchart), refer to these pages: 
-- [Data prep files](./dataprep)
-- [Join files](./joins)
-- [Plot files](./mods/plots) 
-- [Analysis files](./mods/analysis)
+- [Data prep files](/dataprep)
+- [Join files](/joins)
+- [Plot files](/mods/plots) 
+- [Analysis files](/mods/analysis)
 
 `Data_import.R' is essential and should be run first to pull the data from the database.
 `dataprep_[something].R` files are helpful to clean and structure data for analysis.
@@ -118,9 +118,9 @@ Generating plots of a given relationship is achieved by using the `plot_[somethi
 Analyses are done in files with the name of the analysis in the file name, e.g. an ANOVA analysis between condition and measurement data is performed by `cond_meas_anova.R`. 
 
 Guidelines for modifying joins, plots and analyses are available:
-- [Join modifications](./joins#modifications)
-- [Plot modifications](./mods/plots#modifications) 
-- [Analysis modifications](./mods/analysis#modifications)
+- [Join modifications](/joins#modifications)
+- [Plot modifications](/mods/plots#modifications) 
+- [Analysis modifications](/mods/analysis#modifications)
 
 If you need to modify any plots, it might be helpful to comment out the lines with the `png()` function and the `dev.off()` function (these are the lines that open and close, respectively, the .png writer).
 This will make RStudio produce plots in the Plot tab each time the plotting script is run, so you can tinker with the settings and view the results more quickly.
