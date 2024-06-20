@@ -31,23 +31,7 @@ The data that can be automatically processed by this system needs to have a few 
 
 Download the zipfile of R scripts from [here](./R_files.zip).
 
-In RStudio, in the 'files' tab on the bottom right pane, click 'Upload', select 'Browse...', select the zip file, and click 'OK'. RStudio will automatically unzip the contents of the zipfile into your home directory.
-[screenshots need pointers and stuff]
-
-![In RStudio Files tab, select 'Upload'...](./assets/images/RStudio_zipupload.png)
-*In RStudio Files tab, select 'Upload'...*
-
-![...Browse to the zip file you downloaded...](./assets/images/RStudio_zipupload2.png)
-*...Browse to the zip file you downloaded...*
-    
-![...Select the zip file and click OK...](./assets/images/RStudio_zipupload3.png)
-*...Select the zip file and click OK...*
-    
-![...The zip file is automatically unzipped.](./assets/images/RStudio_zipupload4.png)
-*...The zip file is automatically unzipped.*
-
-[decide which approach is best and choose one?]
-Alternatively, in RStudio, click File > New Project... > Version Control > Git (if a popup asks if you want to save your .RData file, say No). 
+In RStudio, click File > New Project... > Version Control > Git (if a popup asks if you want to save your .RData file, say No). 
 Enter the repository URL: 
 ```https://github.com/ESodja/AOU_R.git```
 and name the project directory, e.g. `AOU_R`. Click 'Create Project'. This will copy all the pages from the github site where this website lives into your directory. The .R files you will be working with are in the R_Files folder.

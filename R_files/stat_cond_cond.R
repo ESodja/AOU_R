@@ -17,7 +17,7 @@ if(multicond != 'Y'){
     names(cor.table) = apply(which.compare, 1, paste, collapse=' vs. ')
 } else {
     
-    cstest <- chisq.test(unique(conddata)[,c(3,4)])
+    cstest <- chisq.test(unique(conddat.unity)[,c(2,3)])
     output <- capture.output(print(cstest))
     writeLines(output, con=file('cond_cond_stats.csv'))
 }
