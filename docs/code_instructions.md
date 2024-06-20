@@ -149,11 +149,11 @@ These changes only require re-running the ploting file and not the entire analys
     
 ## Notes:
 Overviews of each step of the analysis process and how to modify them are available in the following pages:
-> [Data preparation](/dataprep)
-> [Modifying variables](/mods/variables)
-> [Joins](/joins)
-> [Modifying plot outputs](/mods/plots)
-> [Analyses](/mods/analysis)
+> [Data preparation](/AOU_R/dataprep)
+> [Modifying variables](/AOU_R/mods/variables)
+> [Joins](/AOU_R/joins)
+> [Modifying plot outputs](/AOU_R/mods/plots)
+> [Analyses](/AOU_R/mods/analysis)
 
 
 
