@@ -6,7 +6,7 @@ permalink: /how-to/dataset
     
 # Building a dataset
 The first step (once you've decided your research question!) of any project in the All of Us platform is to choose which data your would like to use.
-This is a particularly important step if you are going to use the automated scripts I've put together for this year's institute -- the input data [needs to be in the correct format](./datareqs) or the analyses won't work.
+This is a particularly important step if you are going to use the automated scripts I've put together for this year's institute -- the input data [needs to be in the correct format](/AOU_R/datareqs) or the analyses won't work.
 
 **I have found an order to do things that I think will help the process go more smoothly,** which I outline below. 
 If you would rather dive in and figure things out, that is up to you.

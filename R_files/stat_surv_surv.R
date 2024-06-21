@@ -34,17 +34,20 @@ if (all(!is.na(colSums(numeric_answers)))){
     print(names(survdata_wide[,2:ncol(survdata_wide)]))
     which.ordinal = readline(paste0('Which of the above survey data are ordinal? (enter one of ', paste(1:(ncol(survdata_wide)-1), collapse=', '), ')'))
     ordinals = as.numeric(c(ordinals, which.ordinal))
-    print('What is the order? For example, if the data have values of b, d, f, e, a, c, the order would be 5, 1, 6, 2, 4, 3 to set the order as a, b, c, d, e, f. Enter numbers separated by commas.')
+    print('What is the order? For example, if the data have values of b, d, f, e, a, c, the order would be 5, 1, 6, 2, 4, 3 (i.e. the 5th letter should be in the 1st spot, the 1st letter should be in the 2nd spot, etc.) to set the order as a, b, c, d, e, f. Enter numbers separated by commas.')
     neworder = readline(paste(levels(survdata_factor[[as.numeric(which.ordinal)]]), collapse=', \n'))
     order.ordinal = sapply(paste0('c(', neworder, ')'), function(x) eval(parse(text=x)))
     levels(survdata_factor[[as.numeric(which.ordinal)]]) = levels(survdata_factor[[as.numeric(which.ordinal)]])[order.ordinal]
-    while(more.ordinal=='y' & length(ordinals) < length(ncol(survdata_factor))){
-      which.ordinal = readline(paste('Any others? (enter one of ', paste(1:(ncol(survdata_wide)-1), collapse=', '), ')'))
+    which.ordinal = readline(paste('Any others? (enter one of ', paste(1:(ncol(survdata_wide)-1), collapse=', '), ')'))
+    if(which.ordinal == '') more.ordinal <- 'n'
+    while(more.ordinal=='y' & length(ordinals) < ncol(survdata_factor)){
       ordinals = as.numeric(c(ordinals, which.ordinal))
-      print('What is the order? For example, if the data have values of b, d, f, e, a, c, the order would be 5, 1, 6, 2, 4, 3 to set the order as a, b, c, d, e, f. Enter numbers separated by commas.')
+      print('What is the order? For example, if the data have values of b, d, f, e, a, c, the order would be 5, 1, 6, 2, 4, 3 (i.e. the 5th letter should be in the 1st spot, the 1st letter should be in the 2nd spot, etc.) to set the order as a, b, c, d, e, f. Enter numbers separated by commas.')
       new.order = readline(paste(levels(survdata_factor[[as.numeric(which.ordinal)]]), collapse=', \n'))
       order.ordinal = sapply(paste0('c(', new.order, ')'), function(x) eval(parse(text=x)))
       levels(survdata_factor[[as.numeric(which.ordinal)]]) = levels(survdata_factor[[as.numeric(which.ordinal)]])[order.ordinal]
+      which.ordinal = readline(paste('Any others? (enter one of ', paste(1:(ncol(survdata_wide)-1), collapse=', '), 'or press ENTER for no more ordinal factors)'))
+      if(which.ordinal == '') more.ordinal <- 'n'
     }
   }
   which.compare = data.frame(expand.grid(survqs[,1], survqs[,1]))

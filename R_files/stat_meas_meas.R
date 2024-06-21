@@ -14,3 +14,5 @@ wide_measdat3 = wide_measdat2[!duplicated(wide_measdat2[,1]),]
 correlation = cor(wide_measdat[,2:ncol(wide_measdat)])
 
 print(correlation)
+output <- capture.output(print(correlation))
+writeLines(output, con=file('meas_meas_stat.csv'))

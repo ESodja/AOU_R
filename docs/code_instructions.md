@@ -15,17 +15,17 @@ permalink: /how-to/coding
 > 7. Type `source('filename.R')` into the RStudio console and press `Enter` or `Return` for each file in order, from top to bottom of the flowchart
 > 8. Look at the outputs and download your plots and statistical reports
 
-Here is an [example of a coding workflow](./examples/bmi_coding) that implements these steps.
+Here is an [example of a coding workflow](/AOU_R/examples/bmi_coding) that implements these steps.
 
 ## Full Instructions:
 To modify and use the automated analysis I've built, follow the instructions below:
 
 ### 1. **Generate the desired dataset from the dataset builder on the AoU workbench**
-This is a detailed process that deserves its own page, [like this one](/how-to/dataset).
+This is a detailed process that deserves its own page, [like this one](/AOU_R/how-to/dataset).
 
 Additional help can be found [here](https://support.researchallofus.org/hc/en-us/articles/4556645124244-Using-the-Concept-Set-Selector-and-Dataset-Builder-tools-to-build-your-dataset).
 
-This system requires that the data have a few specific elements and meet a few requirements to automatically process. The guidelines can be found [here](./datareqs). 
+This system requires that the data have a few specific elements and meet a few requirements to automatically process. The guidelines can be found [here](/AOU_R/datareqs). 
 
 The code includes commented lines with instructions that will let you select some alternative approaches, analyses, or outputs. In most cases, if you uncomment a line, it will be after the original line and will overwrite the original coded process; if this is not the case, a comment in the code indicates this. You may also want to comment out the original lines of code if you find you have to wait for a long time (more than a few minutes) for one of the steps to run. Make sure at least one of the lines of code is uncommented so you don't run in to errors!
 [screenshot of commenting/uncommenting code]
@@ -86,7 +86,6 @@ Your Files tab should already have the R scripts from the zip file or the copy o
 ![Save and close the script](./assets/images/SQL_analyze8.png)
 *Save and close the script*
 
-[screenshots need arrows and pointers]
 
 ### 5. **Determine analyses to run**
 Depending on what kind of data you are using, you will need to use different analyses.
@@ -99,17 +98,19 @@ The basic analyses we will work with are outlined in the table below:
 
 These analyses are listed at the bottom of the flowchart below.
 
-![flowchart of files for different types of analyses](./assets/images/flowchart_052824.png)
+![flowchart of files for different types of analyses](./assets/images/flowchart_062024.png)
 From there, trace the arrows back to the specific files that need to be run.
 Anything "upstream" from the desired goal on the bottom row needs to be run, starting from the top.
 For example, if I am trying to run an ANOVA analysis for measured values against survey responses, I would start from the box with `catsurv_meas_plot.R`, and trace it back to `join_catsurv_meas.R`, `dataprep_survey.R`, `dataprep_measurement.R`, and `Data_import.R`.
+
 [screenshot highlighting this example]
+
 These should be run in order starting from the top (the order of files on the same level don't matter, e.g. dataprep_survey.R and dataprep_measurement.R can be run in that order or reversed). 
 For more details on what each type of file does (i.e. a row of the flowchart), refer to these pages: 
-- [Data prep files](/dataprep)
-- [Join files](/joins)
-- [Plot files](/mods/plots) 
-- [Analysis files](/mods/analysis)
+- [Data prep files](/AOU_R/dataprep)
+- [Join files](/AOU_R/joins)
+- [Plot files](/AOU_R/mods/plots) 
+- [Analysis files](/AOU_R/mods/analysis)
 
 `Data_import.R' is essential and should be run first to pull the data from the database.
 `dataprep_[something].R` files are helpful to clean and structure data for analysis.
@@ -118,9 +119,9 @@ Generating plots of a given relationship is achieved by using the `plot_[somethi
 Analyses are done in files with the name of the analysis in the file name, e.g. an ANOVA analysis between condition and measurement data is performed by `cond_meas_anova.R`. 
 
 Guidelines for modifying joins, plots and analyses are available:
-- [Join modifications](/joins#modifications)
-- [Plot modifications](/mods/plots#modifications) 
-- [Analysis modifications](/mods/analysis#modifications)
+- [Join modifications](/AOU_R/joins#modifications)
+- [Plot modifications](/AOU_R/mods/plots#modifications) 
+- [Analysis modifications](/AOU_R/mods/analysis#modifications)
 
 If you need to modify any plots, it might be helpful to comment out the lines with the `png()` function and the `dev.off()` function (these are the lines that open and close, respectively, the .png writer).
 This will make RStudio produce plots in the Plot tab each time the plotting script is run, so you can tinker with the settings and view the results more quickly.
@@ -156,7 +157,3 @@ Overviews of each step of the analysis process and how to modify them are availa
 > [Analyses](/AOU_R/mods/analysis)
 
 
-
-
-[test link](/)
-[test link2](./)

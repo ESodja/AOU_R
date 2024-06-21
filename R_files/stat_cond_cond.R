@@ -1,7 +1,7 @@
 ## Runs statistics for two sets of condition data. Both conditions are set as presence/absence
 ## of diagnosis.
 
-if(multicond != 'Y'){
+if(str_to_upper(multicond) != 'Y'){
     conddata$diagnosis = 1
 
     conddat_wide <- reshape(conddata, idvar='person_id', timevar='standard_concept_name', direction = 'wide')

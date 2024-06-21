@@ -62,7 +62,7 @@ srv_type = 'none'
 mmt_type = 'none'
 
 if ('condition' %in% tf_names) {
-  source('dataprep_condition.R')
+#   source('dataprep_condition.R')
   if (length(condnames[,1]) > 2){
     print('More than 2 conditions detected; analysis will be run as presence/absence of all conditions')
     cnd_type = 'mult_pa'
@@ -75,7 +75,7 @@ if ('condition' %in% tf_names) {
   }
 }
 if ('survey' %in% tf_names) {
-  source('dataprep_survey.R')
+#   source('dataprep_survey.R')
   # test for survey answer type (single answer or multiple response)
   if (length(survqs[,1]) > 2){
     stop('More than 2 survey questions detected; analysis will require custom configuration')
@@ -88,7 +88,7 @@ if ('survey' %in% tf_names) {
   }
 }
 if ('measurement' %in% tf_names) {
-  source('dataprep_measurement.R')
+#   source('dataprep_measurement.R')
   if (length(meastypes[,1]) >= 2 & length(tf_names) == 1 & 'measurement' %in% names(tf_names)){
     print('Detected 2 or more measurements to compare against each other')
     mmt_type = '2meas'
@@ -100,20 +100,11 @@ if ('measurement' %in% tf_names) {
 #    break
   }
 }
-if (length(tf_names) == 1){
-    
-    # check that there are 2+ elements in that dataset to compare
-    # run a file that compares the data type to itself
-} else if (length(tf_names) == 2){
-    
-    # make sure there is only one element in each data type to compare
-    # run the file that joins and compares these data
-} else if (length(tf_names) > 2){
-}
     
 if (mmt_type == '2meas' & srv_type == 'none' & cnd_type == 'none'){
     print('Comparing two measurements for each individual')
-    source('meas_meas_corr.R')
+    source('stat_meas_meas.R')
+    source('plot_meas_meas.R')
 } else if (mmt_type == 'none' & srv_type == '2q' & cnd_type == 'none'){
     print('Comparing two survey answers for each individual')
     source('stat_surv_surv.R')
@@ -133,31 +124,37 @@ if (mmt_type == '2meas' & srv_type == 'none' & cnd_type == 'none'){
     print('Comparing a measurement against presence/absence of several conditions')
     source('join_cond_meas.R')
     source('plot_cond_meas.R')
-    source('stats_cond_meas.R')
+    source('stat_cond_meas.R')
 } else if (mmt_type == '1meas' & srv_type == 'none' & cnd_type == 'sing_pa'){
     # one measured value against p/a of one condition
     print('Comparing a measurement against presence/absence of a single condition')
     source('join_cond_meas.R')
+    source('plot_cond_meas.R')
+    source('stat_cond_meas.R')
 } else if (mmt_type == 'none' & srv_type == '1q' & cnd_type == 'mult_pa'){
     # one survey question against p/a of several conditions
     print('Comparing a survey response against presence/absence of several conditions')
     source('join_surv_cond.R')
     source('plot_surv_cond.R')
-    source('stats_surv_cond.R')
+    source('stat_surv_cond.R')
 } else if (mmt_type == 'none' & srv_type == '1q' & cnd_type == 'sing_pa'){
     # one survey question against p/a of one condition
     print('Comparing a survey response against presence/absence of a single condition')
     source('join_surv_cond.R')
     source('plot_surv_cond.R')
-    source('stats_surv_cond.R')
+    source('stat_surv_cond.R')
 } else if (mmt_type == '2meas' & srv_type == 'none' & cnd_type == 'sing_pa'){
     # two measured values against p/a of one condition
     print('Comparing two measured values against presence/absence of a single condition')
     source('join_cond_meas.R')
+    source('plot_cond_meas.R')
+    source('stat_cond_meas.R')
 } else if (mmt_type == '2meas' & srv_type == 'none' & cnd_type == 'mult_pa2'){
     # two measured values against p/a of two conditions
     print('Comparing two measured values against presence/absence of two conditions')
     source('join_cond_meas.R')
+    source('plot_cond_meas.R')
+    source('stat_cond_meas.R')
     
 } else print('This analysis may be too complex for an automated analysis system; try subsetting data in the dataset builder according to the group(s) you would like to compare. See data_reqs.md page on the github site for more information.')
 

@@ -19,33 +19,65 @@ Users must generate the dataset using the dataset builder on the AOU researcher 
 Users of this automated structure can run `master.R` to initiate data import, after which the system will ask a series of questions which the user will answer in the Console in RStudio.
 Users working with modified code will likely have to run each R script individually in sequence, from top to bottom of the flowchart below.
 
-![flowchart of files for different types of analyses](./assets/images/flowchart_052824.png)
+![flowchart of files for different types of analyses](https://esodja.github.io/AOU_R/assets/images/flowchart_062024.png)
 
+## Files in the cookbook
+### Initialization/Inputs
+- [Data_import.R](https://github.com/ESodja/AOU_R/blob/main/R_files/Data_import.R)
+- [master.R](https://github.com/ESodja/AOU_R/blob/main/R_files/master.R)
+
+### Data preparation
+- [dataprep_condition.R](https://github.com/ESodja/AOU_R/blob/main/R_files/dataprep_condition.R)
+- [dataprep_survey.R](https://github.com/ESodja/AOU_R/blob/main/R_files/dataprep_survey.R)
+- [dataprep_measure.R](https://github.com/ESodja/AOU_R/blob/main/R_files/dataprep_measure.R)
+
+### Joining data types
+- [join_cond_meas.R](https://github.com/ESodja/AOU_R/blob/main/R_files/join_cond_meas.R)
+- [join_surv_cond.R](https://github.com/ESodja/AOU_R/blob/main/R_files/join_surv_cond.R)
+- [join_surv_meas.R](https://github.com/ESodja/AOU_R/blob/main/R_files/join_surv_meas.R)
+
+### Analysis
+- [stat_cond_cond.R](https://github.com/ESodja/AOU_R/blob/main/R_files/stat_cond_cond.R)
+- [stat_cond_meas.R](https://github.com/ESodja/AOU_R/blob/main/R_files/stat_cond_meas.R)
+- [stat_surv_meas.R](https://github.com/ESodja/AOU_R/blob/main/R_files/stat_surv_meas.R)
+- [stat_surv_cond.R](https://github.com/ESodja/AOU_R/blob/main/R_files/stat_surv_cond.R)
+- [stat_surv_surv.R](https://github.com/ESodja/AOU_R/blob/main/R_files/stat_surv_surv.R)
+- [stat_meas_meas.R](https://github.com/ESodja/AOU_R/blob/main/R_files/stat_meas_meas.R)
+
+### Plotting
+- [plot_cond_cond.R](https://github.com/ESodja/AOU_R/blob/main/R_files/plot_cond_cond.R)
+- [plot_cond_meas.R](https://github.com/ESodja/AOU_R/blob/main/R_files/plot_cond_meas.R)
+- [plot_surv_meas.R](https://github.com/ESodja/AOU_R/blob/main/R_files/plot_surv_meas.R)
+- [plot_surv_cond.R](https://github.com/ESodja/AOU_R/blob/main/R_files/plot_surv_cond.R)
+- [plot_surv_surv.R](https://github.com/ESodja/AOU_R/blob/main/R_files/plot_surv_surv.R)
+<!-- - [plot_meas_meas.R](https://github.com/ESodja/AOU_R/blob/main/R_files/plot_meas_meas.R) -->
+
+    
 ## How to run your analyses
 ### Non-coding users: 
-1. [Generate your dataset](./how-to/dataset) on the researcher workbench
-2. [Initialize](/how-to/non-coding#initialize-your-rstudio-cloud-environment) your RStudio cloud environment
-3. [Import](/how-to/non-coding#import-the-cookbook-files) the R scripts to RStudio
-4. [Copy](/how-to/non-coding#copy-the-sql-code-to-data_import.r) the SQL code from the dataset builder into 'Data_import.R'
-5. [Type](/how-to/non-coding#run-the-program) `source('master.R')` into the RStudio console and press `Enter` or `Return`, and answer the questions that come up in the console
+1. [Generate your dataset](https://esodja.github.io/AOU_R/how-to/dataset) on the researcher workbench
+2. [Initialize](https://esodja.github.io/AOU_R/how-to/non-coding#initialize-your-rstudio-cloud-environment) your RStudio cloud environment
+3. [Import](https://esodja.github.io/AOU_R/how-to/non-coding#import-the-cookbook-files) the R scripts to RStudio
+4. [Copy](https://esodja.github.io/AOU_R/how-to/non-coding#copy-the-sql-code-to-data_import.r) the SQL code from the dataset builder into 'Data_import.R'
+5. [Type](https://esodja.github.io/AOU_R/how-to/non-coding#run-the-program) `source('master.R')` into the RStudio console and press `Enter` or `Return`, and answer the questions that come up in the console
 6. Look at the outputs and download your plots and statistical reports.
 
-[Detailed non-coding instructions with screenshots](./how-to/non-coding)
+[Detailed non-coding instructions with screenshots](https://esodja.github.io/AOU_R/how-to/non-coding)
 
-[Example of non-coding workflow](./examples/bmi_noncoding)
+[Example of non-coding workflow](https://esodja.github.io/AOU_R/examples/bmi_noncoding)
 
 ### Coding (or “coding curious”) users:
-1. [Generate your dataset](./how-to/dataset) on the researcher workbench
-2. [Initialize](/how-to/non-coding#initialize-your-rstudio-cloud-environment) your RStudio cloud environment
-3. [Import](/how-to/non-coding#import-the-cookbook-files) the R scripts to RStudio
-4. [Copy](/how-to/non-coding#copy-the-sql-code-to-data_import.r) the SQL code from the dataset builder into 'Data_import.R'
-5. [Determine](/how-to/coding#determine-analyses-to-run) the analysis you would like to run and which files to modify, if any
-6. [Type](/how-to/coding#run-each-file-in-order-in-the-console) `source('filename.R')` into the RStudio console and press `Enter` or `Return` for each file in order, from top to bottom of the flowchart
+1. [Generate your dataset](https://esodja.github.io/AOU_R/how-to/dataset) on the researcher workbench
+2. [Initialize](https://esodja.github.io/AOU_R/how-to/non-coding#initialize-your-rstudio-cloud-environment) your RStudio cloud environment
+3. [Import](https://esodja.github.io/AOU_R/how-to/non-coding#import-the-cookbook-files) the R scripts to RStudio
+4. [Copy](https://esodja.github.io/AOU_R/how-to/non-coding#copy-the-sql-code-to-data_import.r) the SQL code from the dataset builder into 'Data_import.R'
+5. [Determine](https://esodja.github.io/AOU_R/how-to/coding#determine-analyses-to-run) the analysis you would like to run and which files to modify, if any
+6. [Type](https://esodja.github.io/AOU_R/how-to/coding#run-each-file-in-order-in-the-console) `source('filename.R')` into the RStudio console and press `Enter` or `Return` for each file in order, from top to bottom of the flowchart
 7. Look at the outputs and download your plots and statistical reports
 
-[Detailed coding instructions with screenshots](./how-to/coding)
+[Detailed coding instructions with screenshots](https://esodja.github.io/AOU_R/how-to/coding)
 
-[Example of coding workflow](./examples/bmi_coding) 
+[Example of coding workflow](https://esodja.github.io/AOU_R/examples/bmi_coding) 
 
 Data selection for this project is handled entirely by the dataset builder. Help can be found [here](https://support.researchallofus.org/hc/en-us/articles/4556645124244-Using-the-Concept-Set-Selector-and-Dataset-Builder-tools-to-build-your-dataset).
 

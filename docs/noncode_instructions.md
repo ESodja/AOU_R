@@ -8,7 +8,7 @@ permalink: /how-to/non-coding
 ## Quick Reference
 > 1. Generate your dataset on the researcher workbench
 > 2. Initialize your RStudio cloud environment
-> 3. Download and upload the [zip file](./R_files.zip) to the cloud environment (it will unzip automatically)
+> 3. Import the cookbook from GitHub
 > 4. Copy the SQL code into 'Data_import.R'
 > 5. Type `source('master.R')` into the RStudio console and press `Enter` or `Return`, and answer the questions that come up in the console
 > 6. Look at the outputs and download your plots and statistical reports
@@ -16,11 +16,11 @@ permalink: /how-to/non-coding
 ## Full Instructions
 To use the automated analysis I've built for this group, follow the instructions below:
 ### 1. **Generate the desired dataset from the dataset builder on the AoU workbench**
-This is a detailed process that deserves its own page, [like this one](./how-to/dataset).
+This is a detailed process that deserves its own page, [like this one](/AOU_R/how-to/dataset).
 
 Additional help can be found [here](https://support.researchallofus.org/hc/en-us/articles/4556645124244-Using-the-Concept-Set-Selector-and-Dataset-Builder-tools-to-build-your-dataset).
 
-The data that can be automatically processed by this system needs to have a few specific elements and meet a few requirements to work. The guidelines can be found [here](./datareqs).
+The data that can be automatically processed by this system needs to have a few specific elements and meet a few requirements to work. The guidelines can be found [here](/AOU_R/datareqs).
 
 ### 2. **Initialize your RStudio cloud environment**
     
@@ -28,9 +28,6 @@ The data that can be automatically processed by this system needs to have a few 
 [details]
 
 ### 3. **Import the cookbook files**
-
-Download the zipfile of R scripts from [here](./R_files.zip).
-
 In RStudio, click File > New Project... > Version Control > Git (if a popup asks if you want to save your .RData file, say No). 
 Enter the repository URL: 
 ```https://github.com/ESodja/AOU_R.git```
@@ -78,7 +75,6 @@ Your Files tab should already have the R scripts from the zip file or the copy o
 ![Save and close the script](./assets/images/SQL_analyze8.png)
 *Save and close the script*
 
-[screenshots need arrows and pointers]
 
 ### 5. **Run the program**
 Enter `source(‘master.R’)` in the RStudio console. After some time (some steps take a while, depending on how large your dataset is), the console will ask some questions about your data and the analysis you want to do, and then proceed based on your answers.
@@ -99,4 +95,4 @@ You can find the generated outputs (plots, statistical results, etc.) in the RSt
 All of these have been designed to comply with the terms of service for registered-tier workbench access.
 
 ## An Example
-Take a look at this [example of a non-coding analysis](./examples/bmi_noncoding).
+Take a look at this [example of a non-coding analysis](/AOU_R/examples/bmi_noncoding).
