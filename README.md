@@ -1,4 +1,4 @@
-# **R recipes for the AOU summer institute 2024**
+# **R recipes for the *All Of Us* Summer Institute 2024**
 
 ## Goals: 
  - Have resources available for new users to perform simple analyses on AoU workbench data
