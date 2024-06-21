@@ -6,7 +6,7 @@ title: Welcome!
 # permalink: /AOU24
 ---
     
-# R recipes for the AOU summer institute 2024
+# R recipes for the *All Of Us* Summer Institute 2024
 
 
 ## Goals: 
