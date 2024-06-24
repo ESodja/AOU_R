@@ -56,11 +56,12 @@ Users working with modified code will likely have to run each R script individua
 ## How to run your analyses
 ### Non-coding users: 
 1. [Generate your dataset](https://esodja.github.io/AOU_R/how-to/dataset) on the researcher workbench
-2. [Initialize](https://esodja.github.io/AOU_R/how-to/non-coding#initialize-your-rstudio-cloud-environment) your RStudio cloud environment
-3. [Import](https://esodja.github.io/AOU_R/how-to/non-coding#import-the-cookbook-files) the R scripts to RStudio
-4. [Copy](https://esodja.github.io/AOU_R/how-to/non-coding#copy-the-sql-code-to-data_import.r) the SQL code from the dataset builder into 'Data_import.R'
-5. [Type](https://esodja.github.io/AOU_R/how-to/non-coding#run-the-program) `source('master.R')` into the RStudio console and press `Enter` or `Return`, and answer the questions that come up in the console
-6. Look at the outputs and download your plots and statistical reports.
+2. [Initialize](https://esodja.github.io/AOU_R/how-to/non-coding#2.-initialize-your-rstudio-cloud-environment) your RStudio cloud environment
+3. [Import](https://esodja.github.io/AOU_R/how-to/non-coding#3.-import-the-cookbook-files) the R scripts to RStudio
+4. [Copy](https://esodja.github.io/AOU_R/how-to/non-coding#4.-copy-the-sql-code-to-data_import.r) the SQL code from the dataset builder into 'Data_import.R'
+5. [Type](https://esodja.github.io/AOU_R/how-to/non-coding#5.-run-the-program) `source('master.R')` into the RStudio console and press `Enter` or `Return`, and answer the questions that come up in the console
+6. [Look](https://esodja.github.io/AOU_R/how-to/non-coding#6.-look-at-the-outputs) at the outputs and download your plots and statistical reports
+7. [Delete](https://esodja.github.io/AOU_R/how-to/non-coding#7.-delete-your-cloud-environment) your cloud environment
 
 [Detailed non-coding instructions with screenshots](https://esodja.github.io/AOU_R/how-to/non-coding)
 
@@ -68,12 +69,13 @@ Users working with modified code will likely have to run each R script individua
 
 ### Coding (or “coding curious”) users:
 1. [Generate your dataset](https://esodja.github.io/AOU_R/how-to/dataset) on the researcher workbench
-2. [Initialize](https://esodja.github.io/AOU_R/how-to/non-coding#initialize-your-rstudio-cloud-environment) your RStudio cloud environment
-3. [Import](https://esodja.github.io/AOU_R/how-to/non-coding#import-the-cookbook-files) the R scripts to RStudio
-4. [Copy](https://esodja.github.io/AOU_R/how-to/non-coding#copy-the-sql-code-to-data_import.r) the SQL code from the dataset builder into 'Data_import.R'
-5. [Determine](https://esodja.github.io/AOU_R/how-to/coding#determine-analyses-to-run) the analysis you would like to run and which files to modify, if any
-6. [Type](https://esodja.github.io/AOU_R/how-to/coding#run-each-file-in-order-in-the-console) `source('filename.R')` into the RStudio console and press `Enter` or `Return` for each file in order, from top to bottom of the flowchart
-7. Look at the outputs and download your plots and statistical reports
+2. [Initialize](https://esodja.github.io/AOU_R/how-to/non-coding#2.-initialize-your-rstudio-cloud-environment) your RStudio cloud environment
+3. [Import](https://esodja.github.io/AOU_R/how-to/non-coding#3.-import-the-cookbook-files) the R scripts to RStudio
+4. [Copy](https://esodja.github.io/AOU_R/how-to/non-coding#4.-copy-the-sql-code-to-data_import.r) the SQL code from the dataset builder into 'Data_import.R'
+5. [Determine](https://esodja.github.io/AOU_R/how-to/coding#5.-determine-analyses-to-run) the analysis you would like to run and which files to modify, if any
+6. [Type](https://esodja.github.io/AOU_R/how-to/coding#6.-run-each-file-in-order-in-the-console) `source('filename.R')` into the RStudio console and press `Enter` or `Return` for each file in order, from top to bottom of the flowchart
+7. [Look](https://esodja.github.io/AOU_R/how-to/coding#7.-view-and-download-the-generated-outputs) at the outputs and download your plots and statistical reports
+8. [Delete](https://esodja.github.io/AOU_R/how-to/coding#8.-delete-your-cloud-environment) your cloud environment
 
 [Detailed coding instructions with screenshots](https://esodja.github.io/AOU_R/how-to/coding)
 

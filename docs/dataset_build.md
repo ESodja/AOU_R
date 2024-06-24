@@ -5,24 +5,24 @@ permalink: /how-to/dataset
 ---
     
 # Building a dataset
-The first step (once you've decided your research question!) of any project in the All of Us platform is to choose which data your would like to use.
+The first step (once you've decided your research question!) of any project in the *All of Us* platform is to choose which data your would like to use.
 This is a particularly important step if you are going to use the automated scripts I've put together for this year's institute -- the input data [needs to be in the correct format](/AOU_R/datareqs) or the analyses won't work.
 
-**I have found an order to do things that I think will help the process go more smoothly,** which I outline below. 
+**I have found an order to do things that I think will help the process go more smoothly,** which I've outlined below. 
 If you would rather dive in and figure things out, that is up to you.
 
 ## Before you start
-A few definitions can be helpful to understand what you are doing with the dataset builder:
+A few definitions can be helpful to understand what you are doing with the Dataset Builder:
 
 > Cohort: a group of people on which a study is run/for whom you have data.
 
-*When you are using the "Cohort Builder" part of the dataset builder, you are choosing which people you want data for, NOT the data you will actually be using.*
+*When you are using the "Cohort Builder" part of the Dataset Builder, you are choosing which people you want data for, NOT the data you will actually be using.*
 
 > Concept set: a type of data collected for participants, e.g. a medical measurement, survey answer, or diagnosis.
 
 ## Building a new workspace
 Each workspace can have several datasets, cohorts, analyses, etc. within them. 
-However, each workspace should be focused on a particular goal or associated group of research questions in order for the project to be easily reviewed according to the All of Us policies.
+However, each workspace should be focused on a particular goal or associated group of research questions in order for the project to be easily reviewed according to the *All of Us* policies.
 **Click on "build a new workspace" from your workbench home page, you will be taken to a page where you can name your workspace and provide descriptions about your goals, approaches, and plans for distribution of results.**
 
 ## Building a dataset
@@ -60,7 +60,7 @@ For the example I am doing here, that will be good enough, but note that this in
 
 ### Cohorts
 To choose which people you want data for, you have to select a cohort.
-This is especially important if you want to study a population that may have a unique relationship to a given condition (e.g. sickle cell anemia among individuals of African descent) or that has been under studied for common health issues because of previous exclusionary research practices.
+This is especially important if you want to study a population that may have a unique relationship to a given condition (e.g. sickle cell anemia among individuals of African descent) or that has been under-studied for common health issues because of previous exclusionary research practices.
 
 **To choose your cohort, from the home page of your workspace, select "Create cohort".**
 This will take you to a page where you can apply a series of filters to select your cohort.
@@ -91,5 +91,3 @@ In this example, I want the person_id column (so that I can connect different ty
 ![select columns](./assets/images/workspace15.png)
 **Click on Create Dataset to add in a name and a description of the dataset and save it for later.**
 
-## Next up
-Initialize your RStudio environment!
