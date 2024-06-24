@@ -46,7 +46,7 @@ combotable <- unique(expand.grid(condition = c(FALSE, cond_in), survey=c(FALSE, 
 combotable = combotable[which(rowSums(combotable) > 0 & rowSums(combotable) < 3),]
 rownames(combotable) = NULL
 combotable$compare = lapply(lapply(apply(combotable, 1, function(x)which(x==TRUE)), names), paste, collapse='-')
-if(combotable$compare == '') combotable$compare = colnames(combotable[which(combotable==TRUE)])
+if(any(combotable$compare == '')) combotable$compare = colnames(combotable[which(combotable==TRUE)])
 print('The potential data comparisons I can see are these:')
 print(cbind(1:nrow(combotable), combotable[,ncol(combotable)]))
 which_analysis = readline(prompt=paste('Which of these would you like to run? (', paste(1:nrow(combotable), collapse=', '),') '))
@@ -89,10 +89,10 @@ if ('survey' %in% tf_names) {
 }
 if ('measurement' %in% tf_names) {
 #   source('dataprep_measurement.R')
-  if (length(meastypes[,1]) >= 2 & length(tf_names) == 1 & 'measurement' %in% names(tf_names)){
+  if (length(meastypes) >= 2 & length(tf_names) == 1 & 'measurement' %in% names(tf_names)){
     print('Detected 2 or more measurements to compare against each other')
     mmt_type = '2meas'
-  } else if ( length(meastypes[,1]) == 1 & length(tf_names) == 2) {
+  } else if ( length(meastypes) == 1 & length(tf_names) == 2) {
     print('Detected 1 measurement to compare to another data type')
     mmt_type = '1meas'
 #   } else if(length(meastypes[,1] >2)){

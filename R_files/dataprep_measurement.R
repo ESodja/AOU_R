@@ -5,7 +5,8 @@ measmat <- t(sapply(paste0('dataset_', data_id, '_measurement_df'), function(x) 
 colnms <- colnames(measmat)
 measdata <- data.frame(mapply(function(x,y) x=measmat[[y]], x=colnms, y=1:length(colnms)))
 print('Hold on, this step may take some time...')
-measdata$indivavg <- lapply(measdata$person_id, function(x) mean(measdata$value_as_number[measdata$person_id==x]))
+measdata <- measdata[match(unique(measdata$person_id), measdata$person_id),]
+# measdata$indivavg <- lapply(measdata$person_id, function(x) mean(measdata$value_as_number[measdata$person_id==x]))
 
 ## Check for unique measurements we are working with
 meastypes <- unique(measdata['standard_concept_name'])
