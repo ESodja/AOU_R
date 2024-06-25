@@ -21,6 +21,10 @@ Certain analyses can be run without any coding necessary, but users with some ex
 
 Most of the pages are listed [here](/AOU_R/pages-overview).
 
+<!-- ![The cookbook's place in the data analysis pipeline -- connects data selection with results](./assets/images/qtocookbook.png) -->
+<img src="./assets/images/qtocookbook.png" width="600">
+
+![flowchart of files for different types of analyses](./assets/images/flowchart_062024.png)
  
 ## Things to know:
 The approach I've developed here only covers specific types of data from the dataset builder. [Check out the limits on what this system can do.](/AOU_R/datareqs)
